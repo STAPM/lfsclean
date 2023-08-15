@@ -132,7 +132,7 @@ lfs_clean_global_5q <- function(data,
              numsickdays1, numsickdays2, numsickdays3, numsickdays4, numsickdays5,
              benclaim1, benclaim2, benclaim3, benclaim4, benclaim5,
              uhours1, uhours2, uhours3, uhours4, uhours5,
-             grsswk1, grsswk2, grsswk3, grsswk4, grsswk5))
+             grsswk1,                            grsswk5))
 
   #############################################################################
   ### reshape long, match in inflation data and create real-earnings variables

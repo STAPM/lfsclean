@@ -97,7 +97,7 @@ Variables whose values can change between waves.
   
 ### Hours and earnings 
 
-- __grsswk(1-5)__ (numeric). Gross weekly earnings (employed)
+- __grsswk(1,5)__ (numeric). Gross weekly earnings of the employed/self-employed (note, only available in waves 1 and 5. Not asked in waves 2-4)
 
 - __uhours(1-5)__ (numeric). Hours usually worked per week (employed)
 
