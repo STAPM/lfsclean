@@ -34,7 +34,8 @@ lfsclean_5q <- function(root,
 
   if (2021 %in% year){
 
-    lfs <- lfs_read_5q_2021(root = root, file = file)
+    lfs <- lfs_clean_global_5q(lfs_read_5q_2021(root = root, file = file),
+                            year = year, ages = ages, keep_vars = keep_vars, complete_vars = complete_vars, deflator = deflator)
 
     data_list <- append(data_list, list(lfs)) ; rm(lfs)
   }
@@ -43,7 +44,9 @@ lfsclean_5q <- function(root,
 
   if (2022 %in% year){
 
-    lfs <- lfs_read_5q_2022(root = root, file = file)
+    lfs <- lfs_clean_global_5q(lfs_read_5q_2022(root = root, file = file),
+                            year = year, ages = ages, keep_vars = keep_vars, complete_vars = complete_vars, deflator = deflator)
+
 
     data_list <- append(data_list, list(lfs)) ; rm(lfs)
   }

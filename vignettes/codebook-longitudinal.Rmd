@@ -32,18 +32,89 @@ Variables which are constant across the waves, and therefore there is only one e
 
 - __lgwt22__ (numeric). Longitudinal weight for producing population-representative statistics.
 
+- __year__ (numeric). Year of first wave interviewed.
+
+- __quarter__ (numeric). Calendar quarter of first wave interviewed.
+
 - __sex__  (factor):
   - "male"
   - "female"
+
+- __empl_sequence__ (character). 5-character representation of the respondents labour market status (ILO definition) over the five waves.e.g. "EEEEU" is an individual employed for the first four quarters and then unemployed in the fifth quarter.
+
+  - "E" employed / self-employed
+  - "U" ILO unemployed
+  - "I" Inactive
+  
+
 
 ## Time-varying Variables 
 
 Variables whose values can change between waves.
 
-- __age(1-5)__ (Numeric). Age in single years 
+### Demographic 
 
-- __etukeul(1-5)__ (Factor). Ethnicity
+- __age(1-5)__ (numeric). Age in single years 
 
-- __ilodefr(1-5)__ (Factor). Economic status (ILO definition)
+- __eth4cat(1-5)__ (factor). Ethnicity (4 categories)
+  - "white"
+  - "black"
+  - "mixed"
+  - "asian_other"
 
+- __empstat2cat(1-5)__ (factor). Economic status (2 categories)
+  - "employed" (including self-employed)
+  - "not_employed"
 
+- __empstat3cat(1-5)__ (factor). Economic status (3 categories)
+  - "employed" (including self-employed)
+  - "inactive" (including those in education)
+  - "unemployed"
+
+- __empstat8cat(1-5)__ (factor). Economic status (8 categories)
+  - "employed"
+  - "self_employed"
+  - "unemployed"
+  - "retired"
+  - "education"
+  - "caring"
+  - "sick"
+  - "other"
+
+- __region(1-5)__
+  - "north_east"
+  - "north_west"
+  - "yorks_and_humber"
+  - "east_mids"
+  - "west_mids"
+  - "east_of_england"
+  - "london"
+  - "south_east"
+  - "south_west"
+  - "scotland"
+  - "wales"
+  - "northern_ireland"
+  
+### Hours and earnings 
+
+- __grsswk(1-5)__ (numeric). Gross weekly earnings (employed)
+
+- __uhours(1-5)__ (numeric). Hours usually worked per week (employed)
+
+### Benefits and sickness
+
+- __benclaim(1-5)__ (factor). Reason for individual receiving benefits. 
+  - "jobseeker"
+  - "sick"
+  - "lone_parent"
+  - "carer"
+  - "other_oow_benefits"
+  - "other_benefits"
+  - "no_benefits"
+  
+
+- __disab(1-5)__ (factor). Disabled under the Equality Act. 
+  - "disabled"
+  - "not_disabled"
+
+- __numsickdays(1-5)__ (numeric). The number of sick days the individual person has taken off in the last week (if any)
