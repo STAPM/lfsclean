@@ -94,8 +94,7 @@
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p><code>lfsclean</code> is currently available only to members of the project team. To access you need to <a href="https://gitlab.com/" class="external-link">sign-up for a GitLab account</a>. You will then need to be added to the STAPM project team to gain access. If you are on a Windows machine you will also need to <a href="https://www.rdocumentation.org/packages/installr/versions/0.22.0/topics/install.Rtools" class="external-link">install Rtools</a>.<br>
-Once that is sorted, you can install the latest version or a specified version from GitLab with:</p>
+<p>You can install the latest version of <code>lfsclean</code> from GitHub with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#install.packages("devtools")</span></span>
 <span><span class="co">#install.packages("getPass")</span></span>
@@ -104,11 +103,7 @@ Once that is sorted, you can install the latest version or a specified version f
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_git.html" class="external-link">install_git</a></span><span class="op">(</span></span>
 <span>  <span class="st">"https://github.com/STAPM/lfsclean.git"</span>, </span>
 <span>  build_vignettes <span class="op">=</span> <span class="cn">FALSE</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Where uname is your Gitlab user name.</span></span>
-<span><span class="co"># ref is the version you want to install - remove for the latest version</span></span>
-<span><span class="co"># this should make a box pop up where you enter your GitLab password</span></span></code></pre></div>
+<span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
@@ -141,7 +136,27 @@ Once that is sorted, you can install the latest version or a specified version f
 <span>                     keep_vars <span class="op">=</span> <span class="va">keep_vars</span>,</span>
 <span>                     complete_vars <span class="op">=</span> <span class="va">complete_vars</span>,</span>
 <span>                     deflator <span class="op">=</span> <span class="va">deflator</span><span class="op">)</span></span></code></pre></div>
-<p>The <code><a href="reference/lfsclean_5q.html">lfsclean_5q()</a></code> wrapper function is used to process the raw five-quarter longitudinal data.</p>
+<p>The <code><a href="reference/lfsclean_5q.html">lfsclean_5q()</a></code> wrapper function is used to process the raw five-quarter longitudinal data. The arguments are simular to those used for the quarterly data cleaning function. <code>year</code> in this case refers to the calendar year in which the first wave of the longitudinal data was interviewed e.g. setting year equal to 2020 would read in, clean, and combine the four longitudinal datasets which began in January-March, April-June, July-September, and October-December of 2020.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="co">## input arguments</span></span>
+<span></span>
+<span><span class="va">root</span>  <span class="op">&lt;-</span> <span class="st">"U:/"</span></span>
+<span><span class="va">file</span>  <span class="op">&lt;-</span> <span class="st">"ManWin/My Documents/Datasets/Labour Force Survey/longitudinal/tab"</span></span>
+<span><span class="va">year</span>  <span class="op">&lt;-</span> <span class="fl">2020</span><span class="op">:</span><span class="fl">2022</span></span>
+<span><span class="va">ages</span>  <span class="op">&lt;-</span> <span class="fl">16</span><span class="op">:</span><span class="fl">64</span></span>
+<span><span class="va">keep_vars</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span>
+<span><span class="va">complete_vars</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span>
+<span><span class="va">deflator</span> <span class="op">&lt;-</span> <span class="st">"cpih"</span></span>
+<span></span>
+<span><span class="co">### Read in longitudinal data</span></span>
+<span></span>
+<span><span class="va">lfs_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/lfsclean_5q.html">lfsclean_5q</a></span><span class="op">(</span><span class="va">root</span>,</span>
+<span>                        <span class="va">file</span>,</span>
+<span>                        year <span class="op">=</span> <span class="va">year</span>,</span>
+<span>                        ages <span class="op">=</span> <span class="va">ages</span>,</span>
+<span>                        keep_vars <span class="op">=</span> <span class="va">keep_vars</span>,</span>
+<span>                        complete_vars <span class="op">=</span> <span class="va">complete_vars</span><span class="op">)</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="projects">Projects<a class="anchor" aria-label="anchor" href="#projects"></a>
 </h3>

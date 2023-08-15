@@ -1,0 +1,191 @@
+---
+title: "Employment and underemployment in the Labour Force Survey"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Employment and underemployment in the Labour Force Survey}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+bibliography: references.bib
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  fig.width = 7, fig.height = 5.5,
+  comment = "#>"
+)
+```
+
+```{r setup, warning=FALSE,message=FALSE}
+library(lfsclean)
+library(tidyr)
+library(tidyverse)
+library(ggthemes)
+library(zoo)
+```
+
+## Introduction
+
+This vignette illustrates the use of the Labour Force Survey (LFS) data to illustrate trends in employment in the UK labour market, making use of the `lfsclean` R package to produce automated and reproducible data cleaning of the variable datasets and variables.
+
+## Data cleaning and processing
+
+See the bottom of this vignette for the code used to produce the results in the next section. Note that these results are based on data cleaned with version `r packageVersion("lfsclean")` of `lfsclean`.
+
+### Measuring unemployment
+
+The standard measurement of unemployment at time $t$ ($U_t$) is the number of individuals out of work but seeking work and available to start work. The unemployment rate is expressed as the fraction of the labour force (total of those in employment or self-employement ($E_t$), and unemployed) which is unemployed:
+
+$$
+u_t = \frac{U_t}{E_t + U_t}
+\label{eq:undemp1}
+$$
+
+The unemployment rate is not a perfect measure of the amount of slack in the labour market, as the unemployed is not the sole source of labour supply. In addition to those out of work seeking to gain employment, individuals currently in employment may be working fewer hours than they would prefer. This phenomenon is known as underemployment [@bell2011a]. The ability of firms to reduce hours of current workers during recessionary periods and increase hours again when demand recovers can avoid the need for costly redundancies. This type of reduction in labour demand would not be captured by simply observing unemployment rates.
+
+### Measuring under-employment
+
+A better of labour market slack would incorporate information on the intensive margin of labour supply (the number of hours an individual works relative to their desired hours of work) as well as the extensive margin (in employment or not). @bell2011a used information from the UK quarterly Labour Force Survey to construct an index of underemployment in order to explain both the small increase in unemployment during the Great Recession (relative to to the contraction in GDP compared to previous recessions), and the sluggish recovery of unemployment following the Great Recession.
+
+The approach to constructing an unemployment rate adjusted for underemployment follows the methods of @bell2011a and @bell2019. First, the total unemployment and employment are constructed in terms of hours. Total employment is multiplied by the average hours worked by those in employment ($\bar{h}$). It is then assumed that the *average hours that would be worked by the unemployed if they were in employment* is the *same* as the average hours worked by the employed, $\bar{h}$:
+
+Using this adjustment, the unemployment rate calculation produces the same answer when employment is measured on the intensive margin as the extensive, as both employment and unemployment are scaled by the same measure as average hours
+
+$$
+u_t = \frac{\bar{h}U_t}{\bar{h}E_t + \bar{h}U_t} = \frac{\bar{h}U_t}{\bar{h}(E_t + U_t)} = \frac{U_t}{E_t + U_t} 
+\label{eq:undemp2}
+$$
+
+This equation can be modified to incorporate individuals not working their desired level of hours per week. The numerator of the unemployment rate equation will consist of three components:
+
+- **Unemployment** ($\bar{h}U_t$). The total number of hours worked not being employed by those currently employed.
+- **Underemployment** ($\sum_{i} Und$). The total number of extra hours that those in work but working fewer hours than they would like wish to work
+- **Overemployment** ($\sum_{i} Ov$). The total number of hours that those in work but working more hours than they would like wish to reduce their working hours by. 
+
+The unemployment formula, adjusting for under/overemployment then becomes:
+
+$$
+u_t = \frac{\bar{h}U_t + \sum_{i} Und - \sum_{i} Ov}{\bar{h}(E_t + U_t)} 
+$$
+
+
+If $\sum_{i} Und = \sum_{i} Ov$, then the resulting underemployment rate will be identical to the standard calculation of the unemployment rate. If $\sum_{i} Und > \sum_{i} Ov$, then overall those in employment wish to work more hours than is currently demanded by employers and the underemployment rate will be greater than the standard calculation of the unemployment rate.
+
+## Results
+
+```{r underemployment, echo = FALSE, warning = FALSE, fig.cap="Unemployment and Underemployment rates in the UK 1993-2023"}
+path <- here::here("vignettes/LFS_underemployment")
+
+lfs_data_clean <- readRDS(paste0(path,"/underemployment_data.rds"))
+
+ggplot(lfs_data_clean) +
+  geom_line(aes(x = time, y = unemp_rate),    color = "#f4a261", linewidth = 1.2) +
+  geom_line(aes(x = time, y = underemp_rate), color = "#8d0801", linewidth = 1.2) +
+  theme_classic() +
+  scale_y_continuous(breaks = seq(0,0.15,0.005), labels = scales::percent) +
+  labs(x = "year-quarter",
+       y = "Unemployment Rate (%)")
+```
+
+```{r difference, echo = FALSE, warning = FALSE, fig.cap="Net under-employment of the unemployed in FTE equivalents"}
+path <- here::here("vignettes/LFS_underemployment")
+
+lfs_data_clean <- readRDS(paste0(path,"/underemployment_data.rds")) %>%
+  mutate(diff = hours_diff/mean_hours) %>%
+  filter(year >= 2001)
+
+ggplot(lfs_data_clean[!is.na(diff),]) +
+  geom_line(aes(x = time, y = diff/1000),    color = "#8d0801", linewidth = 1.2) +
+  geom_hline(yintercept = 0) +
+  theme_classic() +
+  scale_y_continuous(breaks = seq(-1000,1000,100)) +
+  labs(x = "year-quarter",
+       y = "Net under-employment of the employed \nas number of FTE workers (000s)")
+```
+
+## Reproducibility {#reproduce}
+
+The code below can be used to reproduce the cleaning of the data and generation of the plots
+
+### Use lfsclean to read in the data, clean variables, and combine quarters
+
+```{r reading, eval = FALSE}
+#### read in and clean raw data using the package
+
+####################
+## input arguments
+
+root  <- "C:/"
+file  <- "" # path to the folder where the tab files are stored
+year  <- 1993:2023
+ages  <- 16:64
+keep_vars <- NULL
+complete_vars <- NULL
+
+##############################
+### LFS data 1993 - 2022
+
+lfs_data <- lfsclean(root = root,
+                     file = file,
+                     year = year,
+                     ages = ages,
+                     keep_vars = keep_vars,
+                     complete_vars = complete_vars)
+```
+
+### Recreate the unemployment / underemployment rate calculations
+
+```{r cleaning, eval = FALSE}
+
+### Additional data processing to get underemployment index
+
+lfs_data_clean <- lfs_data %>%
+  filter(!is.na(l_lmstatus_3cat)) %>%
+  filter(!is.na(pwt)) %>%
+  filter(l_lmstatus_3cat %in% c("employed","unemployed")) %>%
+  select(month,quarter,year,pwt,l_lmstatus_3cat,eh_uhours,eh_undhrs,eh_ovhrs) %>%
+  mutate(eh_ovhrs = ifelse(is.na(eh_ovhrs),0,eh_ovhrs),
+         eh_undhrs = ifelse(is.na(eh_undhrs),0,eh_undhrs)) %>%
+  mutate(mean_hours = weighted.mean(eh_uhours, w = pwt, na.rm = TRUE),
+         unemployed = ifelse(l_lmstatus_3cat == "employed",0,1),
+         employed = ifelse(l_lmstatus_3cat == "unemployed",0,1)) %>%
+  group_by(year,quarter) %>%
+  summarise(unemp_rate     = sum(pwt*unemployed)/(sum(pwt*unemployed) + sum(pwt*employed)),
+            unemp_rate_hrs = sum(pwt*unemployed*mean_hours)/(sum(pwt*unemployed*mean_hours) + sum(pwt*employed*mean_hours)),
+            underemp_rate  = (sum(pwt*unemployed*mean_hours) + sum(pwt*eh_undhrs) - sum(pwt*eh_ovhrs))/(sum(pwt*unemployed*mean_hours) + sum(pwt*employed*mean_hours)),
+            population = sum(pwt)) %>%
+  ungroup() %>%
+  mutate(time = zoo::as.yearqtr(paste(year,quarter), "%Y %q"))
+```
+
+### Produce the plots
+
+```{r plots, eval = FALSE}
+
+### Unemployment / Underemployment plot 
+
+ggplot(lfs_data_clean) +
+  geom_line(aes(x = time, y = unemp_rate),    color = "#f4a261", linewidth = 1.2) +
+  geom_line(aes(x = time, y = underemp_rate), color = "#8d0801", linewidth = 1.2) +
+  theme_classic() +
+  scale_y_continuous(breaks = seq(0,0.15,0.005), labels = scales::percent) +
+  labs(x = "year-quarter",
+       y = "Unemployment Rate (%)")
+
+### Net underemployment of the employed plot 
+
+lfs_data_clean <- lfs_data_clean %>%
+  mutate(diff = hours_diff/mean_hours) %>%
+  filter(year >= 2001)
+
+ggplot(lfs_data_clean[!is.na(diff),]) +
+  geom_line(aes(x = time, y = diff/1000),    color = "#8d0801", linewidth = 1.2) +
+  geom_hline(yintercept = 0) +
+  theme_classic() +
+  scale_y_continuous(breaks = seq(-1000,1000,100)) +
+  labs(x = "year-quarter",
+       y = "Net under-employment of the employed \nas number of FTE workers (000s)")
+
+```
+
+## References

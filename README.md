@@ -32,14 +32,7 @@ wages), allowing the user to select either the CPIH or RPI.
 
 ## Installation
 
-`lfsclean` is currently available only to members of the project team.
-To access you need to [sign-up for a GitLab
-account](https://gitlab.com/). You will then need to be added to the
-STAPM project team to gain access. If you are on a Windows machine you
-will also need to [install
-Rtools](https://www.rdocumentation.org/packages/installr/versions/0.22.0/topics/install.Rtools).  
-Once that is sorted, you can install the latest version or a specified
-version from GitLab with:
+You can install the latest version of `lfsclean` from GitHub with:
 
 ``` r
 #install.packages("devtools")
@@ -50,10 +43,6 @@ devtools::install_git(
   "https://github.com/STAPM/lfsclean.git", 
   build_vignettes = FALSE
 )
-
-# Where uname is your Gitlab user name.
-# ref is the version you want to install - remove for the latest version
-# this should make a box pop up where you enter your GitLab password
 ```
 
 ## Usage
@@ -102,7 +91,34 @@ lfs_data <- lfsclean(root = root,
 ```
 
 The `lfsclean_5q()` wrapper function is used to process the raw
-five-quarter longitudinal data.
+five-quarter longitudinal data. The arguments are simular to those used
+for the quarterly data cleaning function. `year` in this case refers to
+the calendar year in which the first wave of the longitudinal data was
+interviewed e.g. setting year equal to 2020 would read in, clean, and
+combine the four longitudinal datasets which began in January-March,
+April-June, July-September, and October-December of 2020.
+
+``` r
+
+## input arguments
+
+root  <- "U:/"
+file  <- "ManWin/My Documents/Datasets/Labour Force Survey/longitudinal/tab"
+year  <- 2020:2022
+ages  <- 16:64
+keep_vars <- NULL
+complete_vars <- NULL
+deflator <- "cpih"
+
+### Read in longitudinal data
+
+lfs_data <- lfsclean_5q(root,
+                        file,
+                        year = year,
+                        ages = ages,
+                        keep_vars = keep_vars,
+                        complete_vars = complete_vars)
+```
 
 ### Projects
 
