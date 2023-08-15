@@ -101,12 +101,12 @@ reference:
 
 articles:
 
-- title: Variables
+- title: Variable codebooks
   contents:
   - codebook
   - codebook-longitudinal
 
-- title: UK Labour market data
+- title: Data checks and illustrations
   contents:
   - employment-and-underemployment
 
