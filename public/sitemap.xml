@@ -1,37 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://stapm.gitlab.io/r-packages/lfsclean/authors.html</loc>
+    <loc>https://stapm.gitlab.io/r-packages/lfsclean/404.html</loc>
   </url>
   <url>
-    <loc>https://stapm.gitlab.io/r-packages/lfsclean/LICENSE-text.html</loc>
+    <loc>https://stapm.gitlab.io/r-packages/lfsclean/articles/codebook-longitudinal.html</loc>
+  </url>
+  <url>
+    <loc>https://stapm.gitlab.io/r-packages/lfsclean/articles/codebook.html</loc>
+  </url>
+  <url>
+    <loc>https://stapm.gitlab.io/r-packages/lfsclean/articles/Employment.html</loc>
+  </url>
+  <url>
+    <loc>https://stapm.gitlab.io/r-packages/lfsclean/articles/index.html</loc>
+  </url>
+  <url>
+    <loc>https://stapm.gitlab.io/r-packages/lfsclean/authors.html</loc>
   </url>
   <url>
     <loc>https://stapm.gitlab.io/r-packages/lfsclean/index.html</loc>
   </url>
   <url>
-    <loc>https://stapm.gitlab.io/r-packages/lfsclean/404.html</loc>
-  </url>
-  <url>
-    <loc>https://stapm.gitlab.io/r-packages/lfsclean/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://stapm.gitlab.io/r-packages/lfsclean/reference/RecodeSIC92to07.html</loc>
+    <loc>https://stapm.gitlab.io/r-packages/lfsclean/LICENSE-text.html</loc>
   </url>
   <url>
     <loc>https://stapm.gitlab.io/r-packages/lfsclean/reference/combine_years.html</loc>
   </url>
   <url>
+    <loc>https://stapm.gitlab.io/r-packages/lfsclean/reference/index.html</loc>
+  </url>
+  <url>
     <loc>https://stapm.gitlab.io/r-packages/lfsclean/reference/inflation.html</loc>
   </url>
   <url>
-    <loc>https://stapm.gitlab.io/r-packages/lfsclean/reference/soc2010_lookup.html</loc>
+    <loc>https://stapm.gitlab.io/r-packages/lfsclean/reference/lfsclean.html</loc>
   </url>
   <url>
-    <loc>https://stapm.gitlab.io/r-packages/lfsclean/reference/vacancy.html</loc>
-  </url>
-  <url>
-    <loc>https://stapm.gitlab.io/r-packages/lfsclean/reference/vacancy_by_industry.html</loc>
+    <loc>https://stapm.gitlab.io/r-packages/lfsclean/reference/lfsclean_5q.html</loc>
   </url>
   <url>
     <loc>https://stapm.gitlab.io/r-packages/lfsclean/reference/lfs_clean_demographic.html</loc>
@@ -154,21 +160,18 @@
     <loc>https://stapm.gitlab.io/r-packages/lfsclean/reference/lfs_read_5q_2022.html</loc>
   </url>
   <url>
-    <loc>https://stapm.gitlab.io/r-packages/lfsclean/reference/lfsclean.html</loc>
-  </url>
-  <url>
-    <loc>https://stapm.gitlab.io/r-packages/lfsclean/reference/lfsclean_5q.html</loc>
+    <loc>https://stapm.gitlab.io/r-packages/lfsclean/reference/RecodeSIC92to07.html</loc>
   </url>
   <url>
     <loc>https://stapm.gitlab.io/r-packages/lfsclean/reference/select_data.html</loc>
   </url>
   <url>
-    <loc>https://stapm.gitlab.io/r-packages/lfsclean/articles/index.html</loc>
+    <loc>https://stapm.gitlab.io/r-packages/lfsclean/reference/soc2010_lookup.html</loc>
   </url>
   <url>
-    <loc>https://stapm.gitlab.io/r-packages/lfsclean/articles/codebook.html</loc>
+    <loc>https://stapm.gitlab.io/r-packages/lfsclean/reference/vacancy.html</loc>
   </url>
   <url>
-    <loc>https://stapm.gitlab.io/r-packages/lfsclean/articles/Employment.html</loc>
+    <loc>https://stapm.gitlab.io/r-packages/lfsclean/reference/vacancy_by_industry.html</loc>
   </url>
 </urlset>

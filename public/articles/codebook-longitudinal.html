@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LFS Variable Codebook (cross-sectional) • lfsclean</title>
+<title>LFS Variable Codebook (5q longitudinal) • lfsclean</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
@@ -17,7 +17,7 @@
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="LFS Variable Codebook (cross-sectional)">
+<script src="../pkgdown.js"></script><meta property="og:title" content="LFS Variable Codebook (5q longitudinal)">
 <meta property="og:description" content="lfsclean">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -78,11 +78,11 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>LFS Variable Codebook (cross-sectional)</h1>
+      <h1 data-toc-skip>LFS Variable Codebook (5q longitudinal)</h1>
             
       
       
-      <div class="hidden name"><code>codebook.Rmd</code></div>
+      <div class="hidden name"><code>codebook-longitudinal.Rmd</code></div>
 
     </div>
 
@@ -92,179 +92,160 @@
 <h2 id="list-of-variables">List of Variables<a class="anchor" aria-label="anchor" href="#list-of-variables"></a>
 </h2>
 <p>This document details the cleaned variables derived from the
-cross-sectional quarterly Labour Force Survey datasets using the
-<code>lfsclean</code> package, grouped by cleaning function.</p>
+five-quarter longitudinal Labour Force Survey datasets using the
+<code>lfsclean</code> package. The longitudinal datasets contains a
+subset of the variables from the cross-sectional dataset and takes a
+single cohort of respondents to the LFS, restricted to the respondents
+who responded in each of the five quarters of their participation in the
+survey.</p>
+<p>The data are by default cleaned and output by the
+<code>lfsclean</code> functions in “wide” form, which means a single row
+for each individual and a column for each variable in each wave.</p>
 </div>
 <div class="section level2">
-<h2 id="demographic-variables">Demographic variables<a class="anchor" aria-label="anchor" href="#demographic-variables"></a>
+<h2 id="time-invariant-variables">Time-invariant Variables<a class="anchor" aria-label="anchor" href="#time-invariant-variables"></a>
 </h2>
-<p>Demographic variables produced by the
-<code>lfs_clean_demographic</code> function.</p>
+<p>Variables which are constant across the waves, and therefore there is
+only one entry.</p>
 <ul>
-<li><p><strong>d_age</strong> (numeric)</p></li>
+<li><p><strong>persid</strong> (numeric). Individual
+identifier.</p></li>
+<li><p><strong>lgwt22</strong> (numeric). Longitudinal weight for
+producing population-representative statistics.</p></li>
+<li><p><strong>year</strong> (numeric). Year of first wave
+interviewed.</p></li>
+<li><p><strong>quarter</strong> (numeric). Calendar quarter of first
+wave interviewed.</p></li>
 <li>
-<p><strong>d_sex</strong> (factor):</p>
+<p><strong>sex</strong> (factor):</p>
 <ul>
 <li>“male”</li>
 <li>“female”</li>
 </ul>
 </li>
 <li>
-<p><strong>d_ethnicity_4cat</strong> (factor):</p>
+<p><strong>empl_sequence</strong> (character). 5-character
+representation of the respondents labour market status (ILO definition)
+over the five waves.e.g. “EEEEU” is an individual employed for the first
+four quarters and then unemployed in the fifth quarter.</p>
+<ul>
+<li>“E” employed / self-employed</li>
+<li>“U” ILO unemployed</li>
+<li>“I” Inactive</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section level2">
+<h2 id="time-varying-variables">Time-varying Variables<a class="anchor" aria-label="anchor" href="#time-varying-variables"></a>
+</h2>
+<p>Variables whose values can change between waves.</p>
+<div class="section level3">
+<h3 id="demographic">Demographic<a class="anchor" aria-label="anchor" href="#demographic"></a>
+</h3>
+<ul>
+<li><p><strong>age(1-5)</strong> (numeric). Age in single years</p></li>
+<li>
+<p><strong>eth4cat(1-5)</strong> (factor). Ethnicity (4
+categories)</p>
 <ul>
 <li>“white”</li>
-<li>“mixed”</li>
 <li>“black”</li>
+<li>“mixed”</li>
 <li>“asian_other”</li>
 </ul>
 </li>
 <li>
-<p><strong>d_ethnicity_2cat</strong> (factor):</p>
+<p><strong>empstat2cat(1-5)</strong> (factor). Economic status (2
+categories)</p>
 <ul>
-<li>“white”</li>
-<li>“non_white”</li>
+<li>“employed” (including self-employed)</li>
+<li>“not_employed”</li>
 </ul>
 </li>
 <li>
-<p><strong>d_region</strong> (factor):</p>
+<p><strong>empstat3cat(1-5)</strong> (factor). Economic status (3
+categories)</p>
+<ul>
+<li>“employed” (including self-employed)</li>
+<li>“inactive” (including those in education)</li>
+<li>“unemployed”</li>
+</ul>
+</li>
+<li>
+<p><strong>empstat8cat(1-5)</strong> (factor). Economic status (8
+categories)</p>
+<ul>
+<li>“employed”</li>
+<li>“self_employed”</li>
+<li>“unemployed”</li>
+<li>“retired”</li>
+<li>“education”</li>
+<li>“caring”</li>
+<li>“sick”</li>
+<li>“other”</li>
+</ul>
+</li>
+<li>
+<p><strong>region(1-5)</strong></p>
 <ul>
 <li>“north_east”</li>
 <li>“north_west”</li>
 <li>“yorks_and_humber”</li>
-<li>“east_midlands”</li>
-<li>“west_midlands”</li>
+<li>“east_mids”</li>
+<li>“west_mids”</li>
 <li>“east_of_england”</li>
 <li>“london”</li>
 <li>“south_east”</li>
 <li>“south_west”</li>
-<li>“wales”</li>
-<li>“scotland”</li>
-<li>“northern_ireland”</li>
-</ul>
-</li>
-<li>
-<p><strong>d_country</strong> (factor):</p>
-<ul>
-<li>“england”</li>
 <li>“scotland”</li>
 <li>“wales”</li>
 <li>“northern_ireland”</li>
-</ul>
-</li>
-<li>
-<p><strong>d_marstat</strong> (factor):</p>
-<ul>
-<li>“single”</li>
-<li>“married”</li>
-<li>“sep_div_wid”</li>
 </ul>
 </li>
 </ul>
 </div>
-<div class="section level2">
-<h2 id="economic-activity">Economic activity<a class="anchor" aria-label="anchor" href="#economic-activity"></a>
-</h2>
-<p>Variables cleaned by the <code>lfs_clean_economic_activity</code>
-function - economic status and job characteristics for those in
-work.</p>
+<div class="section level3">
+<h3 id="hours-and-earnings">Hours and earnings<a class="anchor" aria-label="anchor" href="#hours-and-earnings"></a>
+</h3>
 <ul>
-<li>
-<strong>l_lmstatus_2cat</strong> (factor):
-<ul>
-<li>“employed”</li>
-<li>“non_employed”</li>
+<li><p><strong>grsswk(1,5)</strong> (numeric). Gross weekly earnings of
+the employed/self-employed (note, only available in waves 1 and 5. Not
+asked in waves 2-4)</p></li>
+<li><p><strong>uhours(1-5)</strong> (numeric). Hours usually worked per
+week (employed)</p></li>
 </ul>
-</li>
-<li>
-<strong>l_lmstatus_3cat</strong> (factor):
+</div>
+<div class="section level3">
+<h3 id="benefits-and-sickness">Benefits and sickness<a class="anchor" aria-label="anchor" href="#benefits-and-sickness"></a>
+</h3>
 <ul>
-<li>“employed”</li>
-<li>“unemployed”</li>
-<li>“inactive”</li>
-</ul>
-</li>
 <li>
-<strong>l_lmstatus_8cat</strong> (factor):
+<strong>benclaim(1-5)</strong> (factor). Reason for individual
+receiving benefits.
 <ul>
-<li>“employed”</li>
-<li>“self_employed”</li>
-<li>“retired”<br>
-</li>
-<li>“unemployed”</li>
+<li>“jobseeker”</li>
 <li>“sick”</li>
-<li>“caring”</li>
-<li>“education”</li>
-<li>“other”</li>
+<li>“lone_parent”</li>
+<li>“carer”</li>
+<li>“other_oow_benefits”</li>
+<li>“other_benefits”</li>
+<li>“no_benefits”</li>
 </ul>
 </li>
+<li>
+<strong>disab(1-5)</strong> (factor). Disabled under the Equality
+Act.
+<ul>
+<li>“disabled”</li>
+<li>“not_disabled”</li>
+</ul>
+</li>
+<li>
+<strong>numsickdays(1-5)</strong> (numeric). The number of sick days
+the individual person has taken off in the last week (if any)</li>
 </ul>
 </div>
-<div class="section level2">
-<h2 id="education">Education<a class="anchor" aria-label="anchor" href="#education"></a>
-</h2>
-<p>Qualification variables cleaned by the
-<code>lfs_clean_education</code> function.</p>
-<ul>
-<li>
-<strong>q_highest_qual</strong> (factor):
-<ul>
-<li>“Degree”</li>
-<li>“Level 4+ Vocational”</li>
-<li>“Level 3”</li>
-<li>“Level 2”</li>
-<li>“Below Level 2/Other”</li>
-<li>“No qualifications”</li>
-</ul>
-</li>
-<li>
-<strong>q_edage</strong> (numeric):</li>
-</ul>
-</div>
-<div class="section level2">
-<h2 id="earnings-and-hours">Earnings and hours<a class="anchor" aria-label="anchor" href="#earnings-and-hours"></a>
-</h2>
-<p>For those in work, variables on hours worked (and would like to work)
-and earnings cleaned by the <code>lfs_clean_hours_earn</code>
-function.</p>
-<ul>
-<li><p><strong>eh_awage</strong> Real hourly earnings in March 2020
-prices, based on actual hours worked in the reference week
-(Numeric).</p></li>
-<li><p><strong>eh_uwage</strong> Real hourly earnings in March 2020
-prices, based on usual hours worked (Numeric).</p></li>
-<li><p><strong>eh_weekly_earnings</strong> Gross real weekly earnings in
-March 2020 prices in the reference week (Numeric).</p></li>
-<li><p><strong>eh_awage_nom</strong> Nominal hourly earnings, based on
-actual hours worked in the reference week (Numeric).</p></li>
-<li><p><strong>eh_uwage_nom</strong> Nominal hourly earnings, based on
-usual hours worked (Numeric).</p></li>
-<li><p><strong>eh_weekly_earnings_nom</strong> Gross nominal weekly
-earnings in the reference week (Numeric).</p></li>
-<li><p><strong>eh_ahours</strong> Hours worked in the reference week
-(Numeric).</p></li>
-<li><p><strong>eh_uhours</strong> Hours usually worked in a week
-(Numeric).</p></li>
-<li>
-<p><strong>eh_undemp</strong> Would like to work more hours?
-(Factor)</p>
-<ul>
-<li>“yes”</li>
-<li>“no”</li>
-</ul>
-</li>
-<li>
-<p><strong>eh_ovemp</strong> Would like to work fewer hours?
-(Factor)</p>
-<ul>
-<li>“yes”</li>
-<li>“no”</li>
-</ul>
-</li>
-<li><p><strong>eh_ovhrs</strong> Number of horus fewer would like to
-work (Numeric)</p></li>
-<li><p><strong>eh_undhrs</strong> Number of hours more would like to
-work (Numeric)</p></li>
-</ul>
 </div>
   </div>
 
