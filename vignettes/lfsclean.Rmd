@@ -1,13 +1,11 @@
 ---
-title: "Get started"
+title: "Package use"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Get started}
+  %\VignetteIndexEntry{Package use}
   %\VignetteEngine{knitr::rmarkdown}
   \usepackage[utf8]{inputenc}
 ---
-
-## Usage
 
 The **inputs** are the raw LFS data files obtained from the [UK Data Service](https://ukdataservice.ac.uk/). __These must be the tab delimited versions of the data, not Stata or SPSS__, and all individual tab delimited files needed must be placed together in a single directory. 
 

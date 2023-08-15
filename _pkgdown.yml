@@ -19,7 +19,7 @@ navbar:
   components:
     home: ~
     intro:
-     text: Get started
+     text: Usage
      href: articles/lfsclean.html
     reference:
      text: Functions
