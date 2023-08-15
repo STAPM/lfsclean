@@ -7,7 +7,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# Quarterly Labour Force Survey - Data Cleaning ![Labour Force Survey Data Wrangling](man/figures/lfsclean-open.png)
+# Quarterly Labour Force Survey data cleaning <img src="man/figures/README-lfsclean-open.png" align="right" style="padding-left:10px;background-color:white;" width="100" height="100" />
 
 <!-- badges: start -->
 
