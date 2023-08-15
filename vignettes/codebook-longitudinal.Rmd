@@ -1,0 +1,49 @@
+---
+title: "LFS Variable Codebook (5q longitudinal)"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{LFS Variable Codebook (5q longitudinal)}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, echo = FALSE}
+library(lfsclean)
+```
+
+## List of Variables
+
+This document details the cleaned variables derived from the five-quarter longitudinal Labour Force Survey datasets using the `lfsclean` package. The longitudinal datasets contains a subset of the variables from the cross-sectional dataset and takes a single cohort of respondents to the LFS, restricted to the respondents who responded in each of the five quarters of their participation in the survey. 
+
+The data are by default cleaned and output by the `lfsclean` functions in "wide" form, which means a single row for each individual and a column for each variable in each wave. 
+
+## Time-invariant Variables
+
+Variables which are constant across the waves, and therefore there is only one entry.
+
+- __persid__ (numeric). Individual identifier.
+
+- __lgwt22__ (numeric). Longitudinal weight for producing population-representative statistics.
+
+- __sex__  (factor):
+  - "male"
+  - "female"
+
+## Time-varying Variables 
+
+Variables whose values can change between waves.
+
+- __age(1-5)__ (Numeric). Age in single years 
+
+- __etukeul(1-5)__ (Factor). Ethnicity
+
+- __ilodefr(1-5)__ (Factor). Economic status (ILO definition)
+
+
