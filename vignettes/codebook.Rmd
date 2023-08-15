@@ -1,0 +1,138 @@
+---
+title: "LFS Variable Codebook (cross-sectional)"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{LFS Variable Codebook (cross-sectional)}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, echo = FALSE}
+library(lfsclean)
+```
+
+## List of Variables
+
+This document details the cleaned variables derived from the cross-sectional quarterly Labour Force Survey datasets using the `lfsclean` package, grouped by cleaning function.
+
+## Demographic variables
+
+Demographic variables produced by the `lfs_clean_demographic` function.
+
+- __d_age__ (numeric)
+
+- __d_sex__  (factor):
+  - "male"
+  - "female"
+
+- __d_ethnicity_4cat__  (factor):
+   - "white"
+   - "mixed"
+   - "black"
+   - "asian_other"
+
+- __d_ethnicity_2cat__  (factor):
+  - "white"
+  - "non_white"
+
+- __d_region__  (factor):
+  - "north_east"
+  - "north_west"
+  - "yorks_and_humber"
+  - "east_midlands"
+  - "west_midlands"
+  - "east_of_england"
+  - "london"
+  - "south_east"
+  - "south_west"
+  - "wales"
+  - "scotland"
+  - "northern_ireland"
+  
+- __d_country__ (factor):
+  - "england"
+  - "scotland"
+  - "wales"
+  - "northern_ireland"
+
+- __d_marstat__ (factor):
+  - "single"
+  - "married"
+  - "sep_div_wid"
+
+
+## Economic activity 
+
+Variables cleaned by the `lfs_clean_economic_activity` function - economic status and job characteristics for those in work.
+
+- __l_lmstatus_2cat__ (factor):
+  - "employed"
+  - "non_employed"
+
+- __l_lmstatus_3cat__ (factor):
+  - "employed"
+  - "unemployed"
+  - "inactive"
+  
+- __l_lmstatus_8cat__ (factor):
+  - "employed"
+  - "self_employed"
+  - "retired"  
+  - "unemployed"
+  - "sick"
+  - "caring"
+  - "education"
+  - "other"
+  
+## Education 
+
+Qualification variables cleaned by the `lfs_clean_education` function.
+
+- __q_highest_qual__ (factor):
+  - "Degree"
+  - "Level 4+ Vocational"
+  - "Level 3"
+  - "Level 2"
+  - "Below Level 2/Other"
+  - "No qualifications"
+  
+- __q_edage__ (numeric):
+
+## Earnings and hours 
+
+For those in work, variables on hours worked (and would like to work) and earnings cleaned by the `lfs_clean_hours_earn` function.
+
+- __eh_awage__ Real hourly earnings in March 2020 prices, based on actual hours worked in the reference week (Numeric). 
+
+- __eh_uwage__ Real hourly earnings in March 2020 prices, based on usual hours worked (Numeric). 
+
+- __eh_weekly_earnings__ Gross real weekly earnings in March 2020 prices in the reference week (Numeric).
+
+- __eh_awage_nom__ Nominal hourly earnings, based on actual hours worked in the reference week (Numeric).
+
+- __eh_uwage_nom__ Nominal hourly earnings, based on usual hours worked (Numeric).
+
+- __eh_weekly_earnings_nom__ Gross nominal weekly earnings in the reference week (Numeric).
+
+- __eh_ahours__ Hours worked in the reference week (Numeric).
+
+- __eh_uhours__ Hours usually worked in a week (Numeric).
+
+- __eh_undemp__ Would like to work more hours? (Factor)
+  - "yes"
+  - "no"
+
+- __eh_ovemp__ Would like to work fewer hours? (Factor)
+  - "yes"
+  - "no"
+  
+- __eh_ovhrs__ Number of horus fewer would like to work (Numeric)
+
+- __eh_undhrs__ Number of hours more would like to work (Numeric)
