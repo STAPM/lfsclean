@@ -1,0 +1,109 @@
+destination: public
+home:
+  title: Labour Force Survey Data Cleaning
+  links:
+  - text: STAPM webpage
+    href: https://stapm.gitlab.io/
+url: https://stapm.gitlab.io/r-packages/lfsclean
+template:
+  params:
+    bootswatch: flatly
+authors:
+  Damon Morris:
+    href: https://www.sheffield.ac.uk/scharr/people/staff/damon-morris
+
+navbar:
+  structure:
+    left:  [home, intro, reference, articles]
+    right: [gitlab, software]
+  components:
+    home: ~
+    reference:
+     text: Functions
+     href: reference/index.html
+    gitlab:
+      icon: fab fa-gitlab fa-lg
+      href: https://gitlab.com/stapm/r-packages/lfsclean
+    software:
+      icon: fa-code
+      href: https://stapm.gitlab.io/software.html
+
+
+
+reference:
+- title: Wrapper function
+  contents:
+  - lfsclean
+  - lfsclean_5q
+
+- title: Cleaning modules
+  contents:
+  - lfs_clean_global
+  - lfs_clean_global_5q
+  - lfs_clean_hours_earn
+  - lfs_clean_demographic
+  - lfs_clean_education
+  - lfs_clean_economic_activity
+  - combine_years
+  - select_data
+  - RecodeSIC92to07
+
+- title: Raw data reading functions (cross-sectional)
+  contents:
+  - lfs_read_1993
+  - lfs_read_1994
+  - lfs_read_1995
+  - lfs_read_1996
+  - lfs_read_1997
+  - lfs_read_1998
+  - lfs_read_1999
+  - lfs_read_2000
+  - lfs_read_2001
+  - lfs_read_2002
+  - lfs_read_2003
+  - lfs_read_2004
+  - lfs_read_2005
+  - lfs_read_2006
+  - lfs_read_2007
+  - lfs_read_2008
+  - lfs_read_2009
+  - lfs_read_2010
+  - lfs_read_2011
+  - lfs_read_2012
+  - lfs_read_2013
+  - lfs_read_2014
+  - lfs_read_2015
+  - lfs_read_2016
+  - lfs_read_2017
+  - lfs_read_2018
+  - lfs_read_2019
+  - lfs_read_2020
+  - lfs_read_2021
+  - lfs_read_2022
+  - lfs_read_2023
+
+- title: Raw data reading functions (longitudinal)
+  contents:
+  - lfs_read_5q_2020
+  - lfs_read_5q_2021
+  - lfs_read_5q_2022
+
+- title: Package datasets
+  contents:
+  - inflation
+  - vacancy
+  - vacancy_by_industry
+  - soc2010_lookup
+
+
+articles:
+
+- title: Variables
+  contents:
+  - codebook
+
+- title: UK Labour market data
+  contents:
+  - Employment
+
+

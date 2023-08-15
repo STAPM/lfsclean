@@ -1,12 +1,28 @@
 Package: lfsclean
 Type: Package
-Title: What the Package Does (Title Case)
-Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Title: Labour Force Survey (LFS) Data Wrangling
+Version: 1.0.0
+Author: person(given = "Damon",
+           family = "Morris",
+           role = c("aut", "cre"),
+           email = "d.j.morris@sheffield.ac.uk",
+           comment = c(ORCID = "0000-0001-6757-5333"))
+Maintainer: Damon Morris <d.j.morris@sheffield.ac.uk>
+Description: Reads in raw Labour Force Survey data obtained under the End User License from the UK Data Service 
+    and applies functions to clean demographic and labour market variables. The package contains functionality to 
+    clean the quarterly cross-sectional datasets beginning in Q1 1993, and the 5-quarter longitudinal datasets beginning 
+    with the 2020-q1 to 2021-q1 dataset.
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.2.3
+Depends: 
+    R (>= 3.6.1)
+Imports:
+    dplyr,
+    data.table,
+    zoo
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
