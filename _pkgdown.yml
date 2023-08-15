@@ -18,6 +18,9 @@ navbar:
     right: [gitlab, software]
   components:
     home: ~
+    intro:
+     text: Get started
+     href: articles/lfsclean.html
     reference:
      text: Functions
      href: reference/index.html

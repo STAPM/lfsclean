@@ -45,82 +45,15 @@ devtools::install_git(
 )
 ```
 
-## Usage
+## Citation
 
-The **inputs** are the raw LFS data files obtained from the [UK Data
-Service](https://ukdataservice.ac.uk/). **These must be the tab
-delimited versions of the data, not Stata or SPSS**, and all individual
-tab delimited files needed must be placed together in a single
-directory.
+Cite this package as:
 
-A typical workflow for using the package looks as follows, with the read
-data function for each individual year contained within a global
-cleaning function which applies each cleaning function in turn. The
-collection of global cleaning functions for each year are then wrapped
-in a function to combine years of data.
+Morris, D (2023). lfsclean: An R package for cleaning UK Quarterly
+Labour Force Survey data. version \[x.x.x\]. University of Sheffield.
+<https://doi.org/10.17605/OSF.IO/AHDNY>
 
-The `lfsclean()` wrapper function is used to process multiple quarterly
-cross-sectional LFS data files into a single dataset of cleaned
-variables.
-
-``` r
-
-#### read in and clean raw data using the package
-
-####################
-## input arguments
-
-root  <- "C:/"
-file  <- "" # path to the folder where the tab files are
-year  <- 1993:2023
-ages  <- 16:64
-keep_vars <- NULL
-complete_vars <- NULL
-deflator <- "cpih"
-
-##############################
-### LFS data 1993 - 2022
-
-lfs_data <- lfsclean(root = root,
-                     file = file,
-                     year = year,
-                     ages = ages,
-                     keep_vars = keep_vars,
-                     complete_vars = complete_vars,
-                     deflator = deflator)
-```
-
-The `lfsclean_5q()` wrapper function is used to process the raw
-five-quarter longitudinal data. The arguments are simular to those used
-for the quarterly data cleaning function. `year` in this case refers to
-the calendar year in which the first wave of the longitudinal data was
-interviewed e.g. setting year equal to 2020 would read in, clean, and
-combine the four longitudinal datasets which began in January-March,
-April-June, July-September, and October-December of 2020.
-
-``` r
-
-## input arguments
-
-root  <- "U:/"
-file  <- "ManWin/My Documents/Datasets/Labour Force Survey/longitudinal/tab"
-year  <- 2020:2022
-ages  <- 16:64
-keep_vars <- NULL
-complete_vars <- NULL
-deflator <- "cpih"
-
-### Read in longitudinal data
-
-lfs_data <- lfsclean_5q(root,
-                        file,
-                        year = year,
-                        ages = ages,
-                        keep_vars = keep_vars,
-                        complete_vars = complete_vars)
-```
-
-### Projects
+## Projects
 
 Some examples of projects making use of the `lfsclean` package are:
 
