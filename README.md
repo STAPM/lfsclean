@@ -7,7 +7,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# Quarterly Labour Force Survey - Data Cleaning ![Labour Force Survey Data Wrangling](man/figures/logo.png)
+# Quarterly Labour Force Survey - Data Cleaning ![Labour Force Survey Data Wrangling](man/figures/lfsclean-open.png)
 
 <!-- badges: start -->
 
@@ -47,9 +47,7 @@ version from GitLab with:
 #install.packages("git2r")
 
 devtools::install_git(
-  "https://gitlab.com/stapm/r-packages/lfsclean.git", 
-  credentials = git2r::cred_user_pass("uname", getPass::getPass()),
-  ref = "x.x.x",
+  "https://github.com/STAPM/lfsclean.git", 
   build_vignettes = TRUE
 )
 
