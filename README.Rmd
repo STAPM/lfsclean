@@ -40,7 +40,7 @@ Once that is sorted, you can install the latest version or a specified version f
 
 devtools::install_git(
   "https://github.com/STAPM/lfsclean.git", 
-  build_vignettes = TRUE
+  build_vignettes = FALSE
 )
 
 # Where uname is your Gitlab user name.

@@ -48,7 +48,7 @@ version from GitLab with:
 
 devtools::install_git(
   "https://github.com/STAPM/lfsclean.git", 
-  build_vignettes = TRUE
+  build_vignettes = FALSE
 )
 
 # Where uname is your Gitlab user name.
