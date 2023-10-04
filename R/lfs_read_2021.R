@@ -20,25 +20,25 @@ lfs_read_2021 <- function(
   ###### Read in each quarter
   cat(crayon::green("\tJan - Mar..."))
   data.q1 <- data.table::fread(
-    paste0(path,"/lfsp_jm21_eul_pwt20.tab"), showProgress = FALSE,
+    paste0(path,"/lfsp_jm21_eul_pwt22.tab"), showProgress = FALSE,
     na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-90", "-90.0", "N/A")
   )
 
   cat(crayon::green("\tApr - Jun..."))
   data.q2 <- data.table::fread(
-    paste0(path,"/lfsp_aj21_eul_pwt20.tab"), showProgress = FALSE,
+    paste0(path,"/lfsp_aj21_eul_pwt22.tab"), showProgress = FALSE,
     na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-90", "-90.0", "N/A")
   )
 
   cat(crayon::green("\tJul - Sep..."))
   data.q3 <- data.table::fread(
-    paste0(path,"/lfsp_js21_eul_pwt20.tab"), showProgress = FALSE,
+    paste0(path,"/lfsp_js21_eul_pwt22.tab"), showProgress = FALSE,
     na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-90", "-90.0", "N/A")
   )
 
   cat(crayon::green("\tOct - Dec..."))
   data.q4 <- data.table::fread(
-    paste0(path,"/lfsp_od21_eul_pwt20.tab"), showProgress = FALSE,
+    paste0(path,"/lfsp_od21_eul_pwt22.tab"), showProgress = FALSE,
     na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-90", "-90.0", "N/A")
   )
   cat(crayon::yellow("\tdone\n"))
@@ -55,7 +55,7 @@ lfs_read_2021 <- function(
 
     setnames(data, names(data), tolower(names(data)))
 
-    weights_vars     <- Hmisc::Cs(pwt20,piwt20)
+    weights_vars     <- Hmisc::Cs(pwt22,piwt22)
     demographic_vars <- Hmisc::Cs(age,sex,gor9d,ethukeul,marsta)
     education_vars   <- Hmisc::Cs(edage,hiqul15d,hiqual15,bte11,sctvc11,gnvq11,nvq11,rsa11,cag11,numol5,numal,numas,hst,advhst,typhst1,typhst2,typhst3,typhst4,typhst5,
                                   gcseful1,gcseful2,gcseful3,gcseful4,qgcse41,qgcse42,qgcse43,qgcse44,
@@ -79,7 +79,7 @@ lfs_read_2021 <- function(
     # rename variables which have names which change over time but don't need cleaning separately, and variables
     # which don't change over time at all.
 
-    data.table::setnames(data, c("refwkm", "pwt20","piwt20","bte11","sctvc11","gnvq11","nvq11","rsa11","cag11","numol5",
+    data.table::setnames(data, c("refwkm", "pwt22","piwt22","bte11","sctvc11","gnvq11","nvq11","rsa11","cag11","numol5",
                                  "qual_1","qual_2","qual_3","qual_4","qual_5","qual_6","qual_7","qual_8","qual_9","qual_10",
                                  "qual_11","qual_12","qual_13","qual_14","qual_15","qual_16","qual_17","qual_18","qual_19","qual_20","qual_21","qual_22",
                                  "qual_23","qual_24","qual_25","qual_26","qual_27","qual_28","qual_29","qual_30","qual_31"),

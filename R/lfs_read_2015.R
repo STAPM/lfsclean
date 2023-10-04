@@ -32,7 +32,7 @@ lfs_read_2015 <- function(
 
   cat(crayon::green("\tJul - Sep..."))
   data.q3 <- data.table::fread(
-    paste0(path ,"/lfsp_js15_eul.tab"), showProgress = FALSE,
+    paste0(path ,"/lfsp_js15_eul_pwt18.tab"), showProgress = FALSE,
     na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-90", "-90.0", "N/A")
   )
 

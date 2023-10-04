@@ -24,33 +24,33 @@ lfs_read_2023 <- function(
     na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-90", "-90.0", "N/A")
   )
 
-  #  cat(crayon::green("\tApr - Jun..."))
-  #  data.q2 <- data.table::fread(
-  #    paste0(path,"/lfsp_aj21_eul_pwt20.tab"), showProgress = FALSE,
-  #    na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-90", "-90.0", "N/A")
-  #  )
+  cat(crayon::green("\tApr - Jun..."))
+  data.q2 <- data.table::fread(
+    paste0(path,"/lfsp_aj23_eul_pwt22.tab"), showProgress = FALSE,
+    na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-90", "-90.0", "N/A")
+  )
   #
   #  cat(crayon::green("\tJul - Sep..."))
   #  data.q3 <- data.table::fread(
-  #    paste0(path,"/lfsp_js21_eul_pwt20.tab"), showProgress = FALSE,
+  #    paste0(path,"/lfsp_js23_eul_pwt22.tab"), showProgress = FALSE,
   #    na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-90", "-90.0", "N/A")
   #  )
   #
   #  cat(crayon::green("\tOct - Dec..."))
   #  data.q4 <- data.table::fread(
-  #    paste0(path,"/lfsp_od21_eul_pwt20.tab"), showProgress = FALSE,
+  #    paste0(path,"/lfsp_od23_eul_pwt22.tab"), showProgress = FALSE,
   #    na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-90", "-90.0", "N/A")
   #  )
   cat(crayon::yellow("\tdone\n"))
 
   ###### group data tables into a list and initialize a list to store cleaned data tables in
 
-  data.list <- list(data.q1)
+  data.list <- list(data.q1, data.q2)
 
   clean.data.list <- list()
 
   ##### loop the cleaning function over the four quarters
-  for (l in c(1)) {
+  for (l in c(1:2)) {
     data <- data.list[[l]]
 
     setnames(data, names(data), tolower(names(data)))
@@ -85,7 +85,8 @@ lfs_read_2023 <- function(
 
   ### combine quarters into a single data table
 
-  data <- rbind(clean.data.list[[1]], fill=TRUE)
+  data <- rbind(clean.data.list[[1]],
+                clean.data.list[[2]], fill=TRUE)
 
   data <- setDT(data)
 
