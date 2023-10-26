@@ -42,7 +42,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">lfsclean</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.2</span>
       </span>
     </div>
 
@@ -93,6 +93,17 @@
 </h2>
 <p>The motivation for <code>lfsclean</code> is to develop a set of standard functions for processing raw data from the quarterly Labour Force Survey (LFS), which is an ongoing survey of households representative of the UK population primarily collecting demographic and labour market information such as employment status, earnings, and hours of work.</p>
 <p>The <code>lfsclean</code> package contains functions which read in the raw data files, processes them into clean output variables, and combines all data files into a single output data table. The functions also create real-terms values for nominally valued monetary variables (earnings and wages), allowing the user to select either the CPIH or RPI.</p>
+<div class="section level3">
+<h3 id="the-data">The Data<a class="anchor" aria-label="anchor" href="#the-data"></a>
+</h3>
+<p>The Labour Force Survey (LFS) is a representative survey of the UK with the aim of collecting detailed labour market information. It is used to produce official statistics on unemployment. The survey has been conducted on a quarterly basis since 1992 with data collected in waves. Each sampled wave of participants remain in the survey for five consecutive quarters, with five waves participating in the survey at any one time and staggered such that each quarter one wave which has participated for the previous five quarters is replaced with a new wave of participants.</p>
+<p>Note that there has been a long-running trend in the LFS data towards increasing non-response to the survey, particularly after wave 1. Between 2014 and 2020 the overall response rate in a given quarter declined from around 50% to nearer 40%. During 2020 quarter 2, the first full quarter during which Covid-19 restrictions were in force in the UK, the response fell dramatically to below 30%. While some attempt to improve response was made by increasing the wave 1 sample, the overall response rate has continued to decline since, to almost 15% in 2023 quarter 2. Analysis of data from the LFS, particularly from 2020 onwards, should consider the potential impact of these very low response rates, especially when conducting subgroup analysis.</p>
+<div class="figure">
+<img src="reference/figures/README-unnamed-chunk-2-1.png" alt="Labour Force Survey response rate 2014-2023" width="80%"><p class="caption">
+Labour Force Survey response rate 2014-2023
+</p>
+</div>
+</div>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -120,7 +131,7 @@
 <p>Some examples of projects making use of the <code>lfsclean</code> package are:</p>
 <ol style="list-style-type: decimal">
 <li>
-<a href="https://gitlab.com/SPECTRUM_Sheffield/projects/input-output-modelling" class="external-link">Input-Output modelling</a>. Here the package is used to create full-time equivalent employment by sector and year to estimate the impacts of changing demand in different sectors on total employment.</li>
+<a href="https://gitlab.com/stapm/projects/input-output-modelling/input-output-modelling" class="external-link">Input-Output modelling</a>. Here the package is used to create full-time equivalent employment by sector and year to estimate the impacts of changing demand in different sectors on total employment.</li>
 </ol>
 </div>
 </div>
