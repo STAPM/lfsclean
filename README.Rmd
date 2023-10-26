@@ -112,4 +112,4 @@ Morris, D (2023). lfsclean: An R package for cleaning UK Quarterly Labour Force 
 
 Some examples of projects making use of the `lfsclean` package are:
 
-1. [Input-Output modelling](https://gitlab.com/SPECTRUM_Sheffield/projects/input-output-modelling). Here the package is used to create full-time equivalent employment by sector and year to estimate the impacts of changing demand in different sectors on total employment. 
+1. [Input-Output modelling](https://gitlab.com/stapm/projects/input-output-modelling/input-output-modelling). Here the package is used to create full-time equivalent employment by sector and year to estimate the impacts of changing demand in different sectors on total employment. 

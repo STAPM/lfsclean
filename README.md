@@ -91,7 +91,7 @@ Labour Force Survey data. version \[x.x.x\]. University of Sheffield.
 Some examples of projects making use of the `lfsclean` package are:
 
 1.  [Input-Output
-    modelling](https://gitlab.com/SPECTRUM_Sheffield/projects/input-output-modelling).
+    modelling](https://gitlab.com/stapm/projects/input-output-modelling/input-output-modelling).
     Here the package is used to create full-time equivalent employment
     by sector and year to estimate the impacts of changing demand in
     different sectors on total employment.
