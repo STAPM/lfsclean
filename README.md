@@ -30,6 +30,32 @@ files into a single output data table. The functions also create
 real-terms values for nominally valued monetary variables (earnings and
 wages), allowing the user to select either the CPIH or RPI.
 
+### The Data
+
+The Labour Force Survey (LFS) is a representative survey of the UK with
+the aim of collecting detailed labour market information. It is used to
+produce official statistics on unemployment. The survey has been
+conducted on a quarterly basis since 1992 with data collected in waves.
+Each sampled wave of participants remain in the survey for five
+consecutive quarters, with five waves participating in the survey at any
+one time and staggered such that each quarter one wave which has
+participated for the previous five quarters is replaced with a new wave
+of participants.
+
+Note that there has been a long-running trend in the LFS data towards
+increasing non-response to the survey, particularly after wave 1.
+Between 2014 and 2020 the overall response rate in a given quarter
+declined from around 50% to nearer 40%. During 2020 quarter 2, the first
+full quarter during which Covid-19 restrictions were in force in the UK,
+the response fell dramatically to below 30%. While some attempt to
+improve response was made by increasing the wave 1 sample, the overall
+response rate has continued to decline since, to almost 15% in 2023
+quarter 2. Analysis of data from the LFS, particularly from 2020
+onwards, should consider the potential impact of these very low response
+rates, especially when conducting subgroup analysis.
+
+<img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
+
 ## Installation
 
 You can install the latest version of `lfsclean` from GitHub with:
