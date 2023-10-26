@@ -54,7 +54,14 @@ quarter 2. Analysis of data from the LFS, particularly from 2020
 onwards, should consider the potential impact of these very low response
 rates, especially when conducting subgroup analysis.
 
-<img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
+<div class="figure">
+
+<img src="man/figures/README-unnamed-chunk-2-1.png" alt="Labour Force Survey response rate 2014-2023" width="80%" />
+<p class="caption">
+Labour Force Survey response rate 2014-2023
+</p>
+
+</div>
 
 ## Installation
 

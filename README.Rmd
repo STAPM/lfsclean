@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
-  out.width = "100%"
+  out.width = "80%"
 )
 ```
 
@@ -35,7 +35,7 @@ The Labour Force Survey (LFS) is a representative survey of the UK with the aim 
 Note that there has been a long-running trend in the LFS data towards increasing non-response to the survey, particularly after wave 1. Between 2014 and 2020 the overall response rate in a given quarter declined from around 50% to nearer 40%. During 2020 quarter 2, the first full quarter during which Covid-19 restrictions were in force in the UK, the response fell dramatically to below 30%. While some attempt to improve response was made by increasing the wave 1 sample, the overall response rate has continued to decline since, to almost 15% in 2023 quarter 2. Analysis of data from the LFS, particularly from 2020 onwards, should consider the potential impact of these very low response rates, especially when conducting subgroup analysis. 
 
 
-```{r , echo = FALSE, warning=FALSE, message=FALSE}
+```{r , echo = FALSE, warning=FALSE, message=FALSE, fig.cap="Labour Force Survey response rate 2014-2023"}
 library(curl)
 library(readxl)
 library(data.table)
@@ -82,7 +82,7 @@ ggplot(data) +
   labs(x = "year - quarter",
        y = "Response rate",
        color = "",
-       title = "Labour Force Survey response rate 2014-2023") 
+       title = "") 
 ```
 
 ## Installation
