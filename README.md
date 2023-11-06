@@ -30,6 +30,13 @@ files into a single output data table. The functions also create
 real-terms values for nominally valued monetary variables (earnings and
 wages), allowing the user to select either the CPIH or RPI.
 
+Note that due to data quality concerns (see below), the LFS is being
+replaced by the Transformed Labour Force Survey (TLFS). This survey will
+run concurrently with the Annual Population Survey (APS) and LFS during
+2023, after which LFS and APS will be discontinued ([see ONS
+updates](https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/articles/labourmarkettransformationupdateonprogressandplans/may2023)).
+This R package **cleans only original LFS data 1993-2023**.
+
 ### The Data
 
 The Labour Force Survey (LFS) is a representative survey of the UK with

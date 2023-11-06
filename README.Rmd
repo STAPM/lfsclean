@@ -29,6 +29,8 @@ The motivation for `lfsclean` is to develop a set of standard functions for proc
 
 The `lfsclean` package contains functions which read in the raw data files, processes them into clean output variables, and combines all data files into a single output data table. The functions also create real-terms values for nominally valued monetary variables (earnings and wages), allowing the user to select either the CPIH or RPI.
 
+Note that due to data quality concerns (see below), the LFS is being replaced by the Transformed Labour Force Survey (TLFS). This survey will run concurrently with the Annual Population Survey (APS) and LFS during 2023, after which LFS and APS will be discontinued ([see ONS updates](https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/articles/labourmarkettransformationupdateonprogressandplans/may2023)). This R package **cleans only original LFS data 1993-2023**. 
+
 ### The Data
 The Labour Force Survey (LFS) is a representative survey of the UK with the aim of collecting detailed labour market information. It is used to produce official statistics on unemployment. The survey has been conducted on a quarterly basis since 1992 with data collected in waves. Each sampled wave of participants remain in the survey for five consecutive quarters, with five waves participating in the survey at any one time and staggered such that each quarter one wave which has participated for the previous five quarters is replaced with a new wave of participants. 
 
