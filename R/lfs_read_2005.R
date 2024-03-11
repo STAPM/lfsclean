@@ -57,9 +57,10 @@ lfs_read_2005 <- function(
     setnames(data, names(data), tolower(names(data)))
 
     weights_vars     <- Hmisc::Cs(pwt14,piwt14)
-    demographic_vars <- Hmisc::Cs(age,sex,govtof,eth01,marstt)
+    demographic_vars <- Hmisc::Cs(age,sex,govtof,eth01,marstt,fdpch16)
     education_vars   <- Hmisc::Cs(edage,hiqual4d,hiqual4,btec,sctvec,gnvq4,nvqlev,rsa,candg,numal,numas,hst,advhst,
                                   quals401,quals402,quals403,quals404,quals405,quals406,quals407,quals408,quals409,quals410,quals411)
+    health_vars      <- Hmisc::Cs(health,discurr)
     work_vars        <- Hmisc::Cs(inecacr,grsswk,ftptwk,ttachr,ttushr,mpnr02,publicr,indm92m,indd92m,inds92m,soc2km,sc2kmmn,
                                   undemp,undhrs,ovhrs,lespay2)
     other_vars       <- Hmisc::Cs(refwkm,thiswv)
@@ -101,10 +102,11 @@ lfs_read_2005 <- function(
     setnames(data, names(data), tolower(names(data)))
 
     weights_vars     <- Hmisc::Cs(pwt14,piwt14)
-    demographic_vars <- Hmisc::Cs(age,sex,govtof,eth01,marstt)
+    demographic_vars <- Hmisc::Cs(age,sex,govtof,eth01,marstt,fdpch16)
     education_vars   <- Hmisc::Cs(hiqual5d,hiqual5,btec,sctvec,gnvq4,nvqlev,rsa,candg,numol5,numal,numas,hst,advhst,
                                   gcseful1,gcseful2,gcseful3,gcseful4,qgcse41,qgcse42,qgcse43,qgcse44,
                                   quals401,quals402,quals403,quals404,quals405,quals406,quals407,quals408,quals409,quals410,quals411,qualch51)
+    health_vars      <- Hmisc::Cs(health,discurr)
     work_vars        <- Hmisc::Cs(inecac05,grsswk,ftptwk,ttachr,ttushr,mpnr02,publicr,indm92m,indd92m,inds92m,soc2km,sc2kmmn)
     other_vars       <- Hmisc::Cs(refwkm)
 

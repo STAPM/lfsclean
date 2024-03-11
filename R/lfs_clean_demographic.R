@@ -145,12 +145,18 @@ lfs_clean_demographic <- function(
 
   }
 
+  # dependent children in the family
+
+  data[is.na(fdpch16) | fdpch16 == 0, dep_children := "no"]
+  data[fdpch16 > 0, dep_children := "yes"]
+
   ### convert the variables to factors
   data$country             <- as.factor(data$country)
   data$region              <- as.factor(data$region)
   data$ethnicity_4cat      <- as.factor(data$ethnicity_4cat)
   data$ethnicity_2cat      <- as.factor(data$ethnicity_2cat)
   data$marstat             <- as.factor(data$marstat)
+  data$dep_children        <- as.factor(data$dep_children)
 
 
   ###############################
@@ -158,10 +164,10 @@ lfs_clean_demographic <- function(
 
   final_data <- data[, c("obs_id",
                          "age", "sex", "ethnicity_2cat", "ethnicity_4cat",
-                         "region", "country", "marstat")]
+                         "region", "country", "marstat", "dep_children")]
 
   var_names <- c("age", "sex", "ethnicity_2cat", "ethnicity_4cat",
-                 "region", "country", "marstat")
+                 "region", "country", "marstat", "dep_children")
 
   setnames(final_data, var_names, paste0("d_", var_names))
 

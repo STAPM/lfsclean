@@ -2,6 +2,7 @@ library(curl)
 library(readxl)
 library(data.table)
 library(lubridate)
+library(tidyverse)
 
 base <- c(1,2022)
 
@@ -99,12 +100,12 @@ usethis::use_data(inflation, overwrite = TRUE)
 
 ggplot(inflation) +
   geom_line(aes(y = index, x = date, color = measure)) +
-  scale_x_date(limits=c(as.Date("2006-01-01"), as.Date("2022-07-01") )) +
+  scale_x_date(limits=c(as.Date("2006-01-01"), as.Date("2024-01-01") )) +
   theme_classic() +
   geom_hline(yintercept = 100) +
   labs(y = "Index (base = January 2022)",
        x = "",
-       title = "RPI and CPIH Inflation 2006 - July 2022")
+       title = "RPI and CPIH Inflation 2006 - January 2024")
 
 
 

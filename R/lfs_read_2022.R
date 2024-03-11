@@ -56,13 +56,15 @@ lfs_read_2022 <- function(
     setnames(data, names(data), tolower(names(data)))
 
     weights_vars     <- Hmisc::Cs(pwt22,piwt22)
-    demographic_vars <- Hmisc::Cs(age,sex,gor9d,ethukeul,marsta)
+    demographic_vars <- Hmisc::Cs(age,sex,gor9d,ethukeul,marsta,fdpch16)
     education_vars   <- Hmisc::Cs(edage,hiqul22d,hiqual22)
+    health_vars      <- Hmisc::Cs(health20,discurr20,disea)
     work_vars        <- Hmisc::Cs(inecac05,grsswk,ftptwk,ttachr,ttushr,mpnr02,publicr,indc07m,indd07m,inds07m,soc20m,sc20mmn,
                                   undemp,undhrs,ovhrs,lespay2)
+    benefit_vars     <- Hmisc::Cs(ooben)
     other_vars       <- Hmisc::Cs(refwkm,thiswv)
 
-    names <- c(demographic_vars,education_vars,work_vars, weights_vars,other_vars)
+    names <- c(demographic_vars,education_vars,health_vars,work_vars,benefit_vars,weights_vars,other_vars)
     names <- tolower(names)
 
     data <- data[ ,names, with=F]
@@ -78,6 +80,9 @@ lfs_read_2022 <- function(
     data.table::setnames(data,
                          c("refwkm", "pwt22","piwt22"),
                          c("month", "pwt", "piwt") )
+
+    data.table::setnames(data, c("health20","discurr20"), c("health","discurr"))
+
 
     clean.data.list[[l]] <- data
   }

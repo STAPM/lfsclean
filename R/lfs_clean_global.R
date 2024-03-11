@@ -52,18 +52,32 @@ lfs_clean_global <- function(data,
 
   earn <- lfsclean::lfs_clean_hours_earn(data = data, deflator = deflator)
 
+  ### benefits
+
+  #cat(crayon::cyan("\n\t\tHours and earnings variables module\n"))
+
+  bene <- lfsclean::lfs_clean_benefit(data = data)
+
   ### education
 
   #cat(crayon::cyan("\n\t\tEducation variables module\n\n"))
 
   educ <- lfsclean::lfs_clean_education(data = data)
 
+  ### health
+
+  #cat(crayon::cyan("\n\t\tHealth variables module\n\n"))
+
+  heal <- lfsclean::lfs_clean_health(data = data)
+
   ######################
   ### Merge datasets ###
 
   merged_data <- merge(main_data, demographics, by = c("obs_id"))
   merged_data <- merge(merged_data, lmkt,       by = c("obs_id"))
+  merged_data <- merge(merged_data, bene,       by = c("obs_id"))
   merged_data <- merge(merged_data, educ,       by = c("obs_id"))
+  merged_data <- merge(merged_data, heal,       by = c("obs_id"))
   merged_data <- merge(merged_data, earn,       by = c("obs_id"))
 
    final_data <- lfsclean::select_data(

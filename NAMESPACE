@@ -2,11 +2,13 @@
 
 export(RecodeSIC92to07)
 export(combine_years)
+export(lfs_clean_benefit)
 export(lfs_clean_demographic)
 export(lfs_clean_economic_activity)
 export(lfs_clean_education)
 export(lfs_clean_global)
 export(lfs_clean_global_5q)
+export(lfs_clean_health)
 export(lfs_clean_hours_earn)
 export(lfs_read_1993)
 export(lfs_read_1994)

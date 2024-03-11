@@ -5,7 +5,7 @@
 \alias{inflation}
 \title{Monthly Inflation}
 \format{
-An object of class \code{data.table} (inherits from \code{data.frame}) with 848 rows and 5 columns.
+An object of class \code{data.table} (inherits from \code{data.frame}) with 866 rows and 5 columns.
 }
 \usage{
 inflation

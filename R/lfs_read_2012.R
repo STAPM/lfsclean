@@ -56,12 +56,13 @@ lfs_read_2012 <- function(
     setnames(data, names(data), tolower(names(data)))
 
     weights_vars     <- Hmisc::Cs(pwt18,piwt18)
-    demographic_vars <- Hmisc::Cs(age,sex,govtof,ethukeul,marsta)
+    demographic_vars <- Hmisc::Cs(age,sex,govtof,ethukeul,marsta,fdpch16)
     education_vars   <- Hmisc::Cs(edage,hiqul11d,hiqual11,bte11,sctvc11,gnvq11,nvq11,rsa11,cag11,numol5,numal,numas,hst,advhst,typhst1,typhst2,typhst3,typhst4,typhst5,
                                   gcseful1,gcseful2,gcseful3,gcseful4,qgcse41,qgcse42,qgcse43,qgcse44,
                                   qual_1,qual_2,qual_3,qual_4,qual_5,qual_6,qual_7,qual_8,qual_9,qual_10,qual_11,qual_12,qual_13,qual_14,
                                   qual_15,qual_16,qual_17,qual_18,qual_19,qual_20,qual_21,qual_22,qual_23,qual_24,qual_25,qual_26,qual_27,
                                   qual_28,qual_29,qual_30,qual_31)
+    health_vars      <- Hmisc::Cs(health,discurr)
     work_vars        <- Hmisc::Cs(inecac05,grsswk,ftptwk,ttachr,ttushr,mpnr02,publicr,indc07m,indd07m,inds07m,soc10m,sc10mmn,
                                   undemp,undhrs,ovhrs,lespay2)
     other_vars       <- Hmisc::Cs(refwkm,thiswv)

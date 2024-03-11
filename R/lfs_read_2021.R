@@ -56,17 +56,19 @@ lfs_read_2021 <- function(
     setnames(data, names(data), tolower(names(data)))
 
     weights_vars     <- Hmisc::Cs(pwt22,piwt22)
-    demographic_vars <- Hmisc::Cs(age,sex,gor9d,ethukeul,marsta)
+    demographic_vars <- Hmisc::Cs(age,sex,gor9d,ethukeul,marsta,fdpch16)
     education_vars   <- Hmisc::Cs(edage,hiqul15d,hiqual15,bte11,sctvc11,gnvq11,nvq11,rsa11,cag11,numol5,numal,numas,hst,advhst,typhst1,typhst2,typhst3,typhst4,typhst5,
                                   gcseful1,gcseful2,gcseful3,gcseful4,qgcse41,qgcse42,qgcse43,qgcse44,
                                   qual_1,qual_2,qual_3,qual_4,qual_5,qual_6,qual_7,qual_8,qual_9,qual_10,qual_11,qual_12,qual_13,qual_14,
                                   qual_15,qual_16,qual_17,qual_18,qual_19,qual_20,qual_21,qual_22,qual_23,qual_24,qual_25,qual_26,qual_27,
                                   qual_28,qual_29,qual_30,qual_31)
+    health_vars      <- Hmisc::Cs(health20,discurr20,disea)
     work_vars        <- Hmisc::Cs(inecac05,grsswk,ftptwk,ttachr,ttushr,mpnr02,publicr,indc07m,indd07m,inds07m,soc20m,sc20mmn,
                                   undemp,undhrs,ovhrs,lespay2)
+    benefit_vars     <- Hmisc::Cs(ooben)
     other_vars       <- Hmisc::Cs(refwkm,thiswv)
 
-    names <- c(demographic_vars,education_vars,work_vars, weights_vars,other_vars)
+    names <- c(demographic_vars,education_vars,health_vars,work_vars,benefit_vars,weights_vars,other_vars)
     names <- tolower(names)
 
     data <- data[ ,names, with=F]
@@ -87,6 +89,8 @@ lfs_read_2021 <- function(
                            "qf1","qf2","qf3","qf4","qf5","qf6","qf7","qf8","qf9","qf10",
                            "qf11","qf12","qf13","qf14", "qf15","qf16","qf17","qf18","qf19","qf20","qf21","qf22",
                            "qf23","qf24","qf25","qf26","qf27","qf28","qf29","qf30","qf31") )
+
+    data.table::setnames(data, c("health20","discurr20"), c("health","discurr"))
 
     #preliminary cleaning of the vocational qualification variables
     data[btec   %in% c(5,6), btec := NA]

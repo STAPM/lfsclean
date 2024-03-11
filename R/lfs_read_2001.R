@@ -57,9 +57,10 @@ lfs_read_2001 <- function(
     setnames(data, names(data), tolower(names(data)))
 
     weights_vars     <- Hmisc::Cs(pwt07)
-    demographic_vars <- Hmisc::Cs(age,sex,govtof)
+    demographic_vars <- Hmisc::Cs(age,sex,govtof,fdpch16)
     education_vars   <- Hmisc::Cs(edage,btec,sctvec,gnvq,nvqlev,rsa,candg,numal,numas,numol,gcse,qgcse,
                                   quals01,quals02,quals03,quals04,quals05,quals06,quals07,quals08,quals09,quals10,quals11,qualch1)
+    health_vars      <- Hmisc::Cs(health,discurr)
     work_vars        <- Hmisc::Cs(inecacr,     ftptwk,ttachr,ttushr,      publicr,indm92m,indd92m,inds92m)
     other_vars       <- Hmisc::Cs(refwkm,thiswv)
 
@@ -99,9 +100,10 @@ lfs_read_2001 <- function(
     setnames(data, names(data), tolower(names(data)))
 
     weights_vars     <- Hmisc::Cs(pwt07,piwt07)
-    demographic_vars <- Hmisc::Cs(age,sex,govtof,eth01,marstt)
+    demographic_vars <- Hmisc::Cs(age,sex,govtof,eth01,marstt,fdpch16)
     education_vars   <- Hmisc::Cs(edage,btec,sctvec,gnvq,nvqlev,rsa,candg,numal,numas,numol,
                                   quals01,quals02,quals03,quals04,quals05,quals06,quals07,quals08,quals09,quals10,quals11,qualch1)
+    health_vars      <- Hmisc::Cs(health,discurr)
     work_vars        <- Hmisc::Cs(inecacr,grsswk,ftptwk,ttachr,ttushr,mpnr01,publicr,indm92m,indd92m,inds92m,soc2km,sc2kmmn)
     other_vars       <- Hmisc::Cs(refwkm)
 
@@ -142,7 +144,7 @@ lfs_read_2001 <- function(
     setnames(data, names(data), tolower(names(data)))
 
     weights_vars     <- Hmisc::Cs(pwt14,piwt14)
-    demographic_vars <- Hmisc::Cs(age,sex,govtof,eth01,marstt)
+    demographic_vars <- Hmisc::Cs(age,sex,govtof,eth01,marstt,fdpch16)
     education_vars   <- Hmisc::Cs(hiqual,hiquald,btec,sctvec,gnvq,nvqlev,rsa,candg,numal,numas,numol,
                                   quals01,quals02,quals03,quals04,quals05,quals06,quals07,quals08,quals09,quals10,quals11,qualch1)
     work_vars        <- Hmisc::Cs(inecacr,grsswk,ftptwk,ttachr,ttushr,mpnr01,publicr,indm92m,indd92m,inds92m,soc2km,sc2kmmn)
