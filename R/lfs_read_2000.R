@@ -60,11 +60,13 @@ lfs_read_2000 <- function(
     demographic_vars <- Hmisc::Cs(age,sex,govtor,ethcen,marstt,fdpch16)
     education_vars   <- Hmisc::Cs(edage,hiqual,hiquald,btec,sctvec,gnvq,nvqlev,rsa,candg,numal,numas,numol,qgcse,
                                   quals01,quals02,quals03,quals04,quals05,quals06,quals07,quals08,quals09,quals10,quals11,qualch1)
-    health_vars      <- Hmisc::Cs(health,discurr)
+    health_vars      <- Hmisc::Cs(health,discurr,
+                                  heal01,heal02,heal03,heal04,heal05,
+                                  heal06,heal07,heal08,heal09,heal10)
     work_vars        <- Hmisc::Cs(inecacr,grsswk,ftptwk,ttachr,ttushr,mpnor,publicr,indm92m,indd92m,inds92m,socmain,socminm)
     other_vars       <- Hmisc::Cs(refwkm,thiswv)
 
-    names <- c(demographic_vars,education_vars,work_vars, weights_vars,other_vars)
+    names <- c(demographic_vars,education_vars,work_vars,health_vars,weights_vars,other_vars)
     names <- tolower(names)
 
     data <- data[ ,names, with=F]

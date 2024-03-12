@@ -58,7 +58,9 @@ lfs_read_2022 <- function(
     weights_vars     <- Hmisc::Cs(pwt22,piwt22)
     demographic_vars <- Hmisc::Cs(age,sex,gor9d,ethukeul,marsta,fdpch16)
     education_vars   <- Hmisc::Cs(edage,hiqul22d,hiqual22)
-    health_vars      <- Hmisc::Cs(health20,discurr20,disea)
+    health_vars      <- Hmisc::Cs(health20,discurr20,disea,
+                                  heal2001,heal2002,heal2003,heal2004,heal2005,
+                                  heal2006,heal2007,heal2008,heal2009,heal2010)
     work_vars        <- Hmisc::Cs(inecac05,grsswk,ftptwk,ttachr,ttushr,mpnr02,publicr,indc07m,indd07m,inds07m,soc20m,sc20mmn,
                                   undemp,undhrs,ovhrs,lespay2)
     benefit_vars     <- Hmisc::Cs(ooben)
@@ -81,8 +83,13 @@ lfs_read_2022 <- function(
                          c("refwkm", "pwt22","piwt22"),
                          c("month", "pwt", "piwt") )
 
-    data.table::setnames(data, c("health20","discurr20"), c("health","discurr"))
-
+    data.table::setnames(data,
+                         c("health20","discurr20",
+                           "heal2001","heal2002","heal2003","heal2004","heal2005",
+                           "heal2006","heal2007","heal2008","heal2009","heal2010"),
+                         c("health","discurr",
+                           "heal01","heal02","heal03","heal04","heal05",
+                           "heal06","heal07","heal08","heal09","heal10"))
 
     clean.data.list[[l]] <- data
   }

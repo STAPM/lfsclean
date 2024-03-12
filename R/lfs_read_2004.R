@@ -96,12 +96,14 @@ lfs_read_2004 <- function(
                                   gcseful1,gcseful2,gcseful3,gcseful4,qgcse41,qgcse42,qgcse43,qgcse44,
                                   quals401,quals402,quals403,quals404,quals405,quals406,quals407,quals408,quals409,quals410,quals411,
                                   subcod1,subcod2,subcod3,subcod4,subcod5,subcod6,subcod7,subcod8)
-    health_vars      <- Hmisc::Cs(health,discurr)
+    health_vars      <- Hmisc::Cs(health,discurr,
+                                  heal01,heal02,heal03,heal04,heal05,
+                                  heal06,heal07,heal08,heal09,heal10)
     work_vars        <- Hmisc::Cs(inecacr,grsswk,ftptwk,ttachr,ttushr,mpnr02,publicr,indm92m,indd92m,inds92m,soc2km,sc2kmmn,
                                   undemp,undhrs,ovhrs,lespay2)
     other_vars       <- Hmisc::Cs(refwkm)
 
-    names <- c(demographic_vars,education_vars,work_vars, weights_vars,other_vars)
+    names <- c(demographic_vars,education_vars,work_vars,health_vars,weights_vars,other_vars)
     names <- tolower(names)
 
     data <- data[ ,names, with=F]

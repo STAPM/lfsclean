@@ -62,7 +62,9 @@ lfs_read_2021 <- function(
                                   qual_1,qual_2,qual_3,qual_4,qual_5,qual_6,qual_7,qual_8,qual_9,qual_10,qual_11,qual_12,qual_13,qual_14,
                                   qual_15,qual_16,qual_17,qual_18,qual_19,qual_20,qual_21,qual_22,qual_23,qual_24,qual_25,qual_26,qual_27,
                                   qual_28,qual_29,qual_30,qual_31)
-    health_vars      <- Hmisc::Cs(health20,discurr20,disea)
+    health_vars      <- Hmisc::Cs(health20,discurr20,disea,
+                                  heal2001,heal2002,heal2003,heal2004,heal2005,
+                                  heal2006,heal2007,heal2008,heal2009,heal2010)
     work_vars        <- Hmisc::Cs(inecac05,grsswk,ftptwk,ttachr,ttushr,mpnr02,publicr,indc07m,indd07m,inds07m,soc20m,sc20mmn,
                                   undemp,undhrs,ovhrs,lespay2)
     benefit_vars     <- Hmisc::Cs(ooben)
@@ -90,7 +92,13 @@ lfs_read_2021 <- function(
                            "qf11","qf12","qf13","qf14", "qf15","qf16","qf17","qf18","qf19","qf20","qf21","qf22",
                            "qf23","qf24","qf25","qf26","qf27","qf28","qf29","qf30","qf31") )
 
-    data.table::setnames(data, c("health20","discurr20"), c("health","discurr"))
+    data.table::setnames(data,
+                         c("health20","discurr20",
+                           "heal2001","heal2002","heal2003","heal2004","heal2005",
+                           "heal2006","heal2007","heal2008","heal2009","heal2010"),
+                         c("health","discurr",
+                           "heal01","heal02","heal03","heal04","heal05",
+                           "heal06","heal07","heal08","heal09","heal10"))
 
     #preliminary cleaning of the vocational qualification variables
     data[btec   %in% c(5,6), btec := NA]

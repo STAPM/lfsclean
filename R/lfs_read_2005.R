@@ -60,12 +60,14 @@ lfs_read_2005 <- function(
     demographic_vars <- Hmisc::Cs(age,sex,govtof,eth01,marstt,fdpch16)
     education_vars   <- Hmisc::Cs(edage,hiqual4d,hiqual4,btec,sctvec,gnvq4,nvqlev,rsa,candg,numal,numas,hst,advhst,
                                   quals401,quals402,quals403,quals404,quals405,quals406,quals407,quals408,quals409,quals410,quals411)
-    health_vars      <- Hmisc::Cs(health,discurr)
+    health_vars      <- Hmisc::Cs(health,discurr,
+                                  heal01,heal02,heal03,heal04,heal05,
+                                  heal06,heal07,heal08,heal09,heal10)
     work_vars        <- Hmisc::Cs(inecacr,grsswk,ftptwk,ttachr,ttushr,mpnr02,publicr,indm92m,indd92m,inds92m,soc2km,sc2kmmn,
                                   undemp,undhrs,ovhrs,lespay2)
     other_vars       <- Hmisc::Cs(refwkm,thiswv)
 
-    names <- c(demographic_vars,education_vars,work_vars, weights_vars,other_vars)
+    names <- c(demographic_vars,education_vars,work_vars,health_vars,weights_vars,other_vars)
     names <- tolower(names)
 
     data <- data[ ,names, with=F]
@@ -106,11 +108,13 @@ lfs_read_2005 <- function(
     education_vars   <- Hmisc::Cs(hiqual5d,hiqual5,btec,sctvec,gnvq4,nvqlev,rsa,candg,numol5,numal,numas,hst,advhst,
                                   gcseful1,gcseful2,gcseful3,gcseful4,qgcse41,qgcse42,qgcse43,qgcse44,
                                   quals401,quals402,quals403,quals404,quals405,quals406,quals407,quals408,quals409,quals410,quals411,qualch51)
-    health_vars      <- Hmisc::Cs(health,discurr)
+    health_vars      <- Hmisc::Cs(health,discurr,
+                                  heal01,heal02,heal03,heal04,heal05,
+                                  heal06,heal07,heal08,heal09,heal10)
     work_vars        <- Hmisc::Cs(inecac05,grsswk,ftptwk,ttachr,ttushr,mpnr02,publicr,indm92m,indd92m,inds92m,soc2km,sc2kmmn)
     other_vars       <- Hmisc::Cs(refwkm)
 
-    names <- c(demographic_vars,education_vars,work_vars, weights_vars,other_vars)
+    names <- c(demographic_vars,education_vars,work_vars,health_vars,weights_vars,other_vars)
     names <- tolower(names)
 
     data <- data[ ,names, with=F]

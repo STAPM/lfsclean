@@ -62,7 +62,9 @@ lfs_read_2010 <- function(
                                   gcseful1,gcseful2,gcseful3,gcseful4,qgcse41,qgcse42,qgcse43,qgcse44,
                                   quls1001,quls1002,quls1003,quls1004,quls1005,quls1006,quls1007,quls1008,quls1009,quls1010,
                                   quls1011,quls1012,quls1013,quls1014,quls1015,quls1016,quls1017,quls1018,quls1019,quls1020,qualch91)
-    health_vars      <- Hmisc::Cs(health,discurr)
+    health_vars      <- Hmisc::Cs(health,discurr,
+                                  heal01,heal02,heal03,heal04,heal05,
+                                  heal06,heal07,heal08,heal09,heal10)
     work_vars        <- Hmisc::Cs(inecac05,grsswk,ftptwk,ttachr,ttushr,mpnr02,publicr,indc07m,indd07m,inds07m,soc2km,sc2kmmn,
                                   undemp,undhrs,ovhrs,lespay2)
     other_vars       <- Hmisc::Cs(refwkm,thiswv)

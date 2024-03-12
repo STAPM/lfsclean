@@ -63,7 +63,9 @@ lfs_read_2013 <- function(
                                   qual_1,qual_2,qual_3,qual_4,qual_5,qual_6,qual_7,qual_8,qual_9,qual_10,qual_11,qual_12,qual_13,qual_14,
                                   qual_15,qual_16,qual_17,qual_18,qual_19,qual_20,qual_21,qual_22,qual_23,qual_24,qual_25,qual_26,qual_27,
                                   qual_28,qual_29,qual_30,qual_31)
-    health_vars      <- Hmisc::Cs(health,discurr)
+    health_vars      <- Hmisc::Cs(health,discurr,
+                                  heal01,heal02,heal03,heal04,heal05,
+                                  heal06,heal07,heal08,heal09,heal10)
     work_vars        <- Hmisc::Cs(inecac05,grsswk,ftptwk,ttachr,ttushr,mpnr02,publicr,indc07m,indd07m,inds07m,soc10m,sc10mmn,
                                   undemp,undhrs,ovhrs,lespay2)
     other_vars       <- Hmisc::Cs(refwkm,thiswv)
@@ -101,7 +103,9 @@ lfs_read_2013 <- function(
                                   qual_1,qual_2,qual_3,qual_4,qual_5,qual_6,qual_7,qual_8,qual_9,qual_10,qual_11,qual_12,qual_13,qual_14,
                                   qual_15,qual_16,qual_17,qual_18,qual_19,qual_20,qual_21,qual_22,qual_23,qual_24,qual_25,qual_26,qual_27,
                                   qual_28,qual_29,qual_30,qual_31)
-    health_vars      <- Hmisc::Cs(health,discurr13,disea)
+    health_vars      <- Hmisc::Cs(health,discurr13,disea,
+                                  heal01,heal02,heal03,heal04,heal05,
+                                  heal06,heal07,heal08,heal09,heal10)
     work_vars        <- Hmisc::Cs(inecac05,grsswk,ftptwk,ttachr,ttushr,mpnr02,publicr,indc07m,indd07m,inds07m,soc10m,sc10mmn,
                                   undemp,undhrs,ovhrs,lespay2)
     other_vars       <- Hmisc::Cs(refwkm,thiswv)
