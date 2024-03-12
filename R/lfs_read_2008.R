@@ -57,7 +57,7 @@ lfs_read_2008 <- function(
     setnames(data, names(data), tolower(names(data)))
 
     weights_vars     <- Hmisc::Cs(pwt14,piwt14)
-    demographic_vars <- Hmisc::Cs(age,sex,govtof,eth01,marsta,fdpch16)
+    demographic_vars <- Hmisc::Cs(age,sex,govtof,eth01,marsta,mardy6,fdpch16)
     education_vars   <- Hmisc::Cs(edage,hiqual8d,hiqual8,btec8,sctvec,gnvq4,nvqlev,rsa,candg,numol5,numal,numas,hst,advhst,typhst1,typhst2,typhst3,typhst4,typhst5,
                                   gcseful1,gcseful2,gcseful3,gcseful4,qgcse41,qgcse42,qgcse43,qgcse44,
                                   quals601,quals602,quals603,quals604,quals605,quals606,quals607,quals608,quals609,quals610,quals611,qualch51)
@@ -68,7 +68,7 @@ lfs_read_2008 <- function(
                                   undemp,undhrs,ovhrs,lespay2)
     other_vars       <- Hmisc::Cs(refwkm,thiswv)
 
-    names <- c(demographic_vars,education_vars,work_vars, weights_vars,other_vars)
+    names <- c(demographic_vars,education_vars,work_vars,health_vars,weights_vars,other_vars)
     names <- tolower(names)
 
     data <- data[ ,names, with=F]

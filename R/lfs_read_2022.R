@@ -56,7 +56,7 @@ lfs_read_2022 <- function(
     setnames(data, names(data), tolower(names(data)))
 
     weights_vars     <- Hmisc::Cs(pwt22,piwt22)
-    demographic_vars <- Hmisc::Cs(age,sex,gor9d,ethukeul,marsta,fdpch16)
+    demographic_vars <- Hmisc::Cs(age,sex,gor9d,ethukeul,marsta,mardy6,fdpch16)
     education_vars   <- Hmisc::Cs(edage,hiqul22d,hiqual22)
     health_vars      <- Hmisc::Cs(health20,discurr20,disea,
                                   heal2001,heal2002,heal2003,heal2004,heal2005,

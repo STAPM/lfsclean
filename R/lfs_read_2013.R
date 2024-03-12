@@ -57,7 +57,7 @@ lfs_read_2013 <- function(
     setnames(data, names(data), tolower(names(data)))
 
     weights_vars     <- Hmisc::Cs(pwt18,piwt18)
-    demographic_vars <- Hmisc::Cs(age,sex,govtof,ethukeul,marsta,fdpch16)
+    demographic_vars <- Hmisc::Cs(age,sex,govtof,ethukeul,marsta,mardy6,fdpch16)
     education_vars   <- Hmisc::Cs(edage,hiqul11d,hiqual11,bte11,sctvc11,gnvq11,nvq11,rsa11,cag11,numol5,numal,numas,hst,advhst,typhst1,typhst2,typhst3,typhst4,typhst5,
                                   gcseful1,gcseful2,gcseful3,gcseful4,qgcse41,qgcse42,qgcse43,qgcse44,
                                   qual_1,qual_2,qual_3,qual_4,qual_5,qual_6,qual_7,qual_8,qual_9,qual_10,qual_11,qual_12,qual_13,qual_14,
@@ -97,7 +97,7 @@ lfs_read_2013 <- function(
     setnames(data, names(data), tolower(names(data)))
 
     weights_vars     <- Hmisc::Cs(pwt18,piwt18)
-    demographic_vars <- Hmisc::Cs(age,sex,govtof,ethukeul,marsta,fdpch16)
+    demographic_vars <- Hmisc::Cs(age,sex,govtof,ethukeul,marsta,mardy6,fdpch16)
     education_vars   <- Hmisc::Cs(edage,hiqul11d,hiqual11,bte11,sctvc11,gnvq11,nvq11,rsa11,cag11,numol5,numal,numas,hst,advhst,typhst1,typhst2,typhst3,typhst4,typhst5,
                                   gcseful1,gcseful2,gcseful3,gcseful4,qgcse41,qgcse42,qgcse43,qgcse44,
                                   qual_1,qual_2,qual_3,qual_4,qual_5,qual_6,qual_7,qual_8,qual_9,qual_10,qual_11,qual_12,qual_13,qual_14,

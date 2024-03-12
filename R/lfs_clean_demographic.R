@@ -145,6 +145,18 @@ lfs_clean_demographic <- function(
 
   }
 
+  # married or not binary
+
+  if ("mardy6" %in% colnames(data)) {
+    data[mardy6 == 1, married_cohabiting := 1]
+    data[mardy6 == 2, married_cohabiting := 0]
+
+  } else {
+
+    data[, married_cohabiting := NA]
+
+  }
+
   # dependent children in the family
 
   data[is.na(fdpch16) | fdpch16 == 0, dep_children := "no"]
@@ -164,10 +176,10 @@ lfs_clean_demographic <- function(
 
   final_data <- data[, c("obs_id",
                          "age", "sex", "ethnicity_2cat", "ethnicity_4cat",
-                         "region", "country", "marstat", "dep_children")]
+                         "region", "country", "marstat", "married_cohabiting", "dep_children")]
 
   var_names <- c("age", "sex", "ethnicity_2cat", "ethnicity_4cat",
-                 "region", "country", "marstat", "dep_children")
+                 "region", "country", "marstat", "married_cohabiting", "dep_children")
 
   setnames(final_data, var_names, paste0("d_", var_names))
 
