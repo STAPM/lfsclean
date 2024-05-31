@@ -121,7 +121,7 @@ lfs_clean_global_5q <- function(data,
   ### remove variables not needed and retain
 
   data <- data %>%
-    select(c(persid, lgwt, sex, quarter, year, empl_sequence,
+    dplyr::select(c(persid, lgwt, sex, quarter, year, empl_sequence,
              age1, age2, age3, age4, age5,
              disab1, disab2, disab3, disab4, disab5,
              region1, region2, region3, region4, region5,
