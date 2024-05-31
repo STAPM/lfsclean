@@ -53,6 +53,32 @@ lfs_read_5q_2020 <- function(
   )
 
   cat(crayon::yellow("\tdone\n"))
+  ###### no qualification data for some waves, add in as NA
+
+  data.q1[, HIQUL22D1 := NA]
+  data.q1[, HIQUL22D2 := NA]
+  data.q1[, HIQUL22D3 := NA]
+  data.q1[, HIQUL22D4 := NA]
+  data.q1[, HIQUL22D5 := NA]
+
+  data.q2[, HIQUL22D1 := NA]
+  data.q2[, HIQUL22D2 := NA]
+  data.q2[, HIQUL22D3 := NA]
+  data.q2[, HIQUL22D4 := NA]
+  data.q2[, HIQUL22D5 := NA]
+
+  data.q3[, HIQUL22D1 := NA]
+  data.q3[, HIQUL22D2 := NA]
+  data.q3[, HIQUL22D3 := NA]
+  data.q3[, HIQUL22D4 := NA]
+  data.q3[, HIQUL22D5 := NA]
+
+  data.q4[, HIQUL22D1 := NA]
+  data.q4[, HIQUL22D2 := NA]
+  data.q4[, HIQUL22D3 := NA]
+  data.q4[, HIQUL22D4 := NA]
+  data.q4[, HIQUL22D5 := NA]
+
   ###### group data tables into a list and initialize a list to store cleaned data tables in
 
   data.list <- list(data.q1, data.q2, data.q3, data.q4)
@@ -72,7 +98,7 @@ lfs_read_5q_2020 <- function(
                                   etukeul1, etukeul2, etukeul3, etukeul4, etukeul5,
                                   govtof21, govtof22, govtof23, govtof24, govtof25)
 
-    #education_vars   <- Hmisc::Cs(hiqul22d1, hiqul22d2, hiqul22d3, hiqul22d4, hiqul22d5)
+    education_vars   <- Hmisc::Cs(hiqul22d1, hiqul22d2, hiqul22d3, hiqul22d4, hiqul22d5)
 
     empstat_vars        <- Hmisc::Cs(ilodefr1, ilodefr2, ilodefr3, ilodefr4, ilodefr5,
                                      incac051, incac052, incac053, incac054, incac055)
@@ -87,7 +113,7 @@ lfs_read_5q_2020 <- function(
     work_vars     <- Hmisc::Cs(ttushr1, ttushr2, ttushr3, ttushr4, ttushr5,
                                grsswk1, grsswk2, grsswk3, grsswk4, grsswk5)
 
-    names <- c(id_weights_vars, demographic_vars, empstat_vars,
+    names <- c(id_weights_vars, demographic_vars, education_vars, empstat_vars,
                work_vars, health_vars, benefit_vars)
 
     data <- data[ ,names, with=F]
