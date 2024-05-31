@@ -48,6 +48,18 @@ lfs_clean_global_5q <- function(data,
   data <- data %>%
     mutate(sex = factor(sex, levels = 1:2, labels = c("male","female"))) %>%
 
+    mutate(hiqual1 = case_match(hiqul22d1, c(1) ~ "degree", c(2) ~ "other_he", c(3) ~ "alevel", c(4) ~ "gcse", c(5) ~ "other_qual", c(6) ~ "no_qual", c(7) ~ NA)) %>%
+    mutate(hiqual2 = case_match(hiqul22d2, c(1) ~ "degree", c(2) ~ "other_he", c(3) ~ "alevel", c(4) ~ "gcse", c(5) ~ "other_qual", c(6) ~ "no_qual", c(7) ~ NA)) %>%
+    mutate(hiqual3 = case_match(hiqul22d3, c(1) ~ "degree", c(2) ~ "other_he", c(3) ~ "alevel", c(4) ~ "gcse", c(5) ~ "other_qual", c(6) ~ "no_qual", c(7) ~ NA)) %>%
+    mutate(hiqual4 = case_match(hiqul22d4, c(1) ~ "degree", c(2) ~ "other_he", c(3) ~ "alevel", c(4) ~ "gcse", c(5) ~ "other_qual", c(6) ~ "no_qual", c(7) ~ NA)) %>%
+    mutate(hiqual5 = case_match(hiqul22d5, c(1) ~ "degree", c(2) ~ "other_he", c(3) ~ "alevel", c(4) ~ "gcse", c(5) ~ "other_qual", c(6) ~ "no_qual", c(7) ~ NA)) %>%
+
+    mutate(hiqual1 = factor(hiqual1, levels = c("no_qual","other_qual","gcse","alevel","other_he","degree"))) %>%
+    mutate(hiqual2 = factor(hiqual2, levels = c("no_qual","other_qual","gcse","alevel","other_he","degree"))) %>%
+    mutate(hiqual3 = factor(hiqual3, levels = c("no_qual","other_qual","gcse","alevel","other_he","degree"))) %>%
+    mutate(hiqual4 = factor(hiqual4, levels = c("no_qual","other_qual","gcse","alevel","other_he","degree"))) %>%
+    mutate(hiqual5 = factor(hiqual5, levels = c("no_qual","other_qual","gcse","alevel","other_he","degree"))) %>%
+
     mutate(eth2cat1 = case_match(etukeul1, c(1) ~ "white", c(2:9) ~ "non_white")) %>%
     mutate(eth2cat2 = case_match(etukeul2, c(1) ~ "white", c(2:9) ~ "non_white")) %>%
     mutate(eth2cat3 = case_match(etukeul3, c(1) ~ "white", c(2:9) ~ "non_white")) %>%
@@ -123,6 +135,7 @@ lfs_clean_global_5q <- function(data,
   data <- data %>%
     dplyr::select(c(persid, lgwt, sex, quarter, year, empl_sequence,
              age1, age2, age3, age4, age5,
+             hiqual1, hiqual2, hiqual3, hiqual4, hiqual5,
              disab1, disab2, disab3, disab4, disab5,
              region1, region2, region3, region4, region5,
              eth4cat1, eth4cat2, eth4cat3, eth4cat4, eth4cat5,
