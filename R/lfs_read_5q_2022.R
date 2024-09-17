@@ -26,6 +26,8 @@ lfs_read_5q_2022 <- function(
     na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-90", "-90.0", "N/A")
   )
 
+  cat(crayon::yellow("\tdone\n"))
+
   cat(crayon::green("\tApr-Jun 2022 to Apr-Jun 2023"))
   data.q2 <- data.table::fread(
     paste0(path,"/lgwt22_5q_aj22_aj23_eul.tab"), showProgress = FALSE,
