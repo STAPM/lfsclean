@@ -61,6 +61,11 @@ lfs_read_5q_2018 <- function(
   data.q3[, month := 8]
   data.q4[, month := 11]
 
+  data.q1[, id := paste0(1:nrow(data.q1),"-1-2018") ]
+  data.q2[, id := paste0(1:nrow(data.q2),"-2-2018") ]
+  data.q3[, id := paste0(1:nrow(data.q3),"-3-2018") ]
+  data.q4[, id := paste0(1:nrow(data.q4),"-4-2018") ]
+
   data.list <- list(data.q1, data.q2, data.q3, data.q4)
 
   clean.data.list <- list()
@@ -75,7 +80,7 @@ lfs_read_5q_2018 <- function(
              c("lgwt17","hiul15d1","hiul15d2","hiul15d3","hiul15d4","hiul15d5"),
              c("lgwt22","hiqul22d1","hiqul22d2","hiqul22d3","hiqul22d4","hiqul22d5"))
 
-    id_weights_vars  <- Hmisc::Cs(persid, lgwt22, month)
+    id_weights_vars  <- Hmisc::Cs(id, persid, lgwt22, month)
 
     demographic_vars <- Hmisc::Cs(sex,
                                   age1, age2, age3, age4, age5)

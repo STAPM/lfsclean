@@ -76,10 +76,10 @@ lfs_clean_global_5q <- function(data,
   data[, empstat3cat5 := dplyr::case_match(incac055, c(1:4) ~ "employed", c(5) ~ "unemployed", c(6:33) ~ "inactive")]
 
   data[, empstat8cat1 := dplyr::case_match(incac051, c(1,3,4) ~ "employed", c(2) ~ "self_employed", c(6,13,24) ~ "education", c(5) ~ "unemployed", c(8:9,15:16,26:27) ~ "sick", c(7,14,25) ~ "caring", c(20,31) ~ "retired", c(10:11,17:19,21:23,28:30,32:34) ~ "other")]
-  data[, empstat8cat2 := dplyr::case_match(incac051, c(1,3,4) ~ "employed", c(2) ~ "self_employed", c(6,13,24) ~ "education", c(5) ~ "unemployed", c(8:9,15:16,26:27) ~ "sick", c(7,14,25) ~ "caring", c(20,31) ~ "retired", c(10:11,17:19,21:23,28:30,32:34) ~ "other")]
-  data[, empstat8cat3 := dplyr::case_match(incac051, c(1,3,4) ~ "employed", c(2) ~ "self_employed", c(6,13,24) ~ "education", c(5) ~ "unemployed", c(8:9,15:16,26:27) ~ "sick", c(7,14,25) ~ "caring", c(20,31) ~ "retired", c(10:11,17:19,21:23,28:30,32:34) ~ "other")]
-  data[, empstat8cat4 := dplyr::case_match(incac051, c(1,3,4) ~ "employed", c(2) ~ "self_employed", c(6,13,24) ~ "education", c(5) ~ "unemployed", c(8:9,15:16,26:27) ~ "sick", c(7,14,25) ~ "caring", c(20,31) ~ "retired", c(10:11,17:19,21:23,28:30,32:34) ~ "other")]
-  data[, empstat8cat5 := dplyr::case_match(incac051, c(1,3,4) ~ "employed", c(2) ~ "self_employed", c(6,13,24) ~ "education", c(5) ~ "unemployed", c(8:9,15:16,26:27) ~ "sick", c(7,14,25) ~ "caring", c(20,31) ~ "retired", c(10:11,17:19,21:23,28:30,32:34) ~ "other")]
+  data[, empstat8cat2 := dplyr::case_match(incac052, c(1,3,4) ~ "employed", c(2) ~ "self_employed", c(6,13,24) ~ "education", c(5) ~ "unemployed", c(8:9,15:16,26:27) ~ "sick", c(7,14,25) ~ "caring", c(20,31) ~ "retired", c(10:11,17:19,21:23,28:30,32:34) ~ "other")]
+  data[, empstat8cat3 := dplyr::case_match(incac053, c(1,3,4) ~ "employed", c(2) ~ "self_employed", c(6,13,24) ~ "education", c(5) ~ "unemployed", c(8:9,15:16,26:27) ~ "sick", c(7,14,25) ~ "caring", c(20,31) ~ "retired", c(10:11,17:19,21:23,28:30,32:34) ~ "other")]
+  data[, empstat8cat4 := dplyr::case_match(incac054, c(1,3,4) ~ "employed", c(2) ~ "self_employed", c(6,13,24) ~ "education", c(5) ~ "unemployed", c(8:9,15:16,26:27) ~ "sick", c(7,14,25) ~ "caring", c(20,31) ~ "retired", c(10:11,17:19,21:23,28:30,32:34) ~ "other")]
+  data[, empstat8cat5 := dplyr::case_match(incac055, c(1,3,4) ~ "employed", c(2) ~ "self_employed", c(6,13,24) ~ "education", c(5) ~ "unemployed", c(8:9,15:16,26:27) ~ "sick", c(7,14,25) ~ "caring", c(20,31) ~ "retired", c(10:11,17:19,21:23,28:30,32:34) ~ "other")]
 
   data[, empstat2cat1 := as.factor(empstat2cat1)]
   data[, empstat2cat2 := as.factor(empstat2cat2)]
@@ -145,7 +145,7 @@ lfs_clean_global_5q <- function(data,
   #################################
   ### remove variables not needed and retain
 
-  data <- data[, c("persid", "lgwt", "sex", "quarter", "month", "year", "empl_sequence",
+  data <- data[, c("id", "persid", "lgwt", "sex", "quarter", "month", "year", "empl_sequence",
                    "age1", "age2", "age3", "age4", "age5",
                    "hiqual1", "hiqual2", "hiqual3", "hiqual4", "hiqual5",
                    "disab1", "disab2", "disab3", "disab4", "disab5",

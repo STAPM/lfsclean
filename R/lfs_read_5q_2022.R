@@ -41,6 +41,9 @@ lfs_read_5q_2022 <- function(
   data.q1[, month := 2]
   data.q2[, month := 5]
 
+  data.q1[, id := paste0(1:nrow(data.q1),"-1-2022") ]
+  data.q2[, id := paste0(1:nrow(data.q2),"-2-2022") ]
+
   data.list <- list(data.q1,data.q2)
 
   clean.data.list <- list()
@@ -51,7 +54,7 @@ lfs_read_5q_2022 <- function(
 
     setnames(data, names(data), tolower(names(data)))
 
-    id_weights_vars  <- Hmisc::Cs(persid, lgwt22, month)
+    id_weights_vars  <- Hmisc::Cs(id, persid, lgwt22, month)
 
     demographic_vars <- Hmisc::Cs(sex,
                                   age1, age2, age3, age4, age5,
