@@ -56,6 +56,11 @@ lfs_read_5q_2012 <- function(
 
   ###### group data tables into a list and initialize a list to store cleaned data tables in
 
+  data.q1[, month := 2]
+  data.q2[, month := 5]
+  data.q3[, month := 8]
+  data.q4[, month := 11]
+
   data.list <- list(data.q1, data.q2, data.q3, data.q4)
 
   clean.data.list <- list()
@@ -70,7 +75,7 @@ lfs_read_5q_2012 <- function(
              c("lgwt17","hiqul11d1","hiqul11d2","hiqul11d3","hiqul11d4","hiqul11d5"),
              c("lgwt22","hiqul22d1","hiqul22d2","hiqul22d3","hiqul22d4","hiqul22d5"))
 
-    id_weights_vars  <- Hmisc::Cs(persid, lgwt22)
+    id_weights_vars  <- Hmisc::Cs(persid, lgwt22, month)
 
     demographic_vars <- Hmisc::Cs(sex,
                                   age1, age2, age3, age4, age5)
