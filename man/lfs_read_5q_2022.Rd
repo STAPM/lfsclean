@@ -19,5 +19,6 @@ Returns a data table
 }
 \description{
 Reads and performs basic cleaning on the Labour Force Survey five-quarter longitudinal
-data with a 1st wave that began in calendar year 2022.
+data with a 1st wave that began in calendar year 2022. (Note that the five-quarter
+longitudinal series was suspended with no dataset beginning July or October of 2022).
 }

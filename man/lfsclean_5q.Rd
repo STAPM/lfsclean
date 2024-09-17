@@ -5,9 +5,9 @@
 \title{Read, Clean, Combine Labour Force Survey data}
 \usage{
 lfsclean_5q(
-  root,
-  file,
-  year = 2022,
+  root = "X:/",
+  file = "HAR_PR/PR/LFS/Data/longitudinal/tab/",
+  year = 2012:2022,
   ages = 16:89,
   keep_vars = NULL,
   complete_vars = NULL,

@@ -1,7 +1,8 @@
 #' Read LFS 2022 longitudinal
 #'
 #' Reads and performs basic cleaning on the Labour Force Survey five-quarter longitudinal
-#' data with a 1st wave that began in calendar year 2022.
+#' data with a 1st wave that began in calendar year 2022. (Note that the five-quarter
+#' longitudinal series was suspended with no dataset beginning July or October of 2022).
 #'
 #' @param root Character - the root directory
 #' @param file Character - the file path and name
@@ -37,8 +38,6 @@ lfs_read_5q_2022 <- function(
 
   data.q1[, month := 2]
   data.q2[, month := 5]
-  data.q3[, month := 8]
-  data.q4[, month := 11]
 
   data.list <- list(data.q1,data.q2)
 
