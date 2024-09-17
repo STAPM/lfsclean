@@ -1,7 +1,7 @@
-#' Read LFS 2020 longitudinal
+#' Read LFS 2016 longitudinal
 #'
 #' Reads and performs basic cleaning on the Labour Force Survey five-quarter longitudinal
-#' data with a 1st wave that began in calendar year 2020.
+#' data with a 1st wave that began in calendar year 2016.
 #'
 #' @param root Character - the root directory
 #' @param file Character - the file path and name
@@ -9,46 +9,46 @@
 #'
 #' @return Returns a data table
 #' @export
-lfs_read_5q_2020 <- function(
+lfs_read_5q_2016 <- function(
     root = c("X:/"),
     file = "HAR_PR/PR/LFS/Data/longitudinal/tab/"
 ) {
 
   path <- here::here(paste0(root[1], file))
 
-  cat(crayon::yellow("Reading LFS 2020:\n"))
+  cat(crayon::yellow("Reading LFS 2016:\n"))
 
   ###### Read in each quarter
-  cat(crayon::green("\tJan-Mar 2020 to Jan-Mar 2021"))
+  cat(crayon::green("\tJan-Mar 2016 to Jan-Mar 2017"))
   data.q1 <- data.table::fread(
-    paste0(path,"/lgwt22_5q_jm20_jm21_eul.tab"), showProgress = FALSE,
+    paste0(path,"/five_q_longitudinal_jm16-jm17_eul_lgwt17.tab"), showProgress = FALSE,
     na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-90", "-90.0", "N/A")
   )
 
   cat(crayon::yellow("\tdone\n"))
 
 
-  cat(crayon::green("\tApr-Jun 2020 to Apr-Jun 2021"))
+  cat(crayon::green("\tApr-Jun 2016 to Apr-Jun 2017"))
   data.q2 <- data.table::fread(
-    paste0(path,"/lgwt22_5q_aj20_aj21_eul.tab"), showProgress = FALSE,
+    paste0(path,"/5q_longitudinal_aj16-aj17_eul_lgwt17.tab"), showProgress = FALSE,
     na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-90", "-90.0", "N/A")
   )
 
   cat(crayon::yellow("\tdone\n"))
 
 
-  cat(crayon::green("\tJul-Sep 2020 to Jul-Sep 2021"))
+  cat(crayon::green("\tJul-Sep 2016 to Jul-Sep 2017"))
   data.q3 <- data.table::fread(
-    paste0(path,"/lgwt22_5q_js20_js21_eul.tab"), showProgress = FALSE,
+    paste0(path,"/5q_longitudinal_js16-js17_eul_lgwt17.tab"), showProgress = FALSE,
     na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-90", "-90.0", "N/A")
   )
 
   cat(crayon::yellow("\tdone\n"))
 
 
-  cat(crayon::green("\tOct-Dec 2020 to Oct-Dec 2021"))
+  cat(crayon::green("\tOct-Dec 2016 to Oct-Dec 2017"))
   data.q4 <- data.table::fread(
-    paste0(path,"/lgwt22_5q_od20_od21_eul.tab"), showProgress = FALSE,
+    paste0(path,"/5q_longitudinal_od16-od17_eul_lgwt17.tab"), showProgress = FALSE,
     na.strings = c("NA", "", "-1", "-2", "-6", "-7", "-8", "-9", "-90", "-90.0", "N/A")
   )
 
@@ -67,38 +67,36 @@ lfs_read_5q_2020 <- function(
     setnames(data, names(data), tolower(names(data)))
 
     setnames(data,
-             c("hiul15d1","hiul15d2","hiul15d3","hiul15d4","hiul15d5"),
-             c("hiqul22d1","hiqul22d2","hiqul22d3","hiqul22d4","hiqul22d5"))
+             c("lgwt17","hiul15d1","hiul15d2","hiul15d3","hiul15d4","hiul15d5"),
+             c("lgwt22","hiqul22d1","hiqul22d2","hiqul22d3","hiqul22d4","hiqul22d5"))
 
     id_weights_vars  <- Hmisc::Cs(persid, lgwt22)
 
     demographic_vars <- Hmisc::Cs(sex,
-                                  age1, age2, age3, age4, age5,
-                                  etukeul1, etukeul2, etukeul3, etukeul4, etukeul5,
-                                  govtof21, govtof22, govtof23, govtof24, govtof25)
+                                  age1, age2, age3, age4, age5)
 
     education_vars   <- Hmisc::Cs(hiqul22d1, hiqul22d2, hiqul22d3, hiqul22d4, hiqul22d5)
 
     empstat_vars        <- Hmisc::Cs(ilodefr1, ilodefr2, ilodefr3, ilodefr4, ilodefr5,
                                      incac051, incac052, incac053, incac054, incac055)
 
-    health_vars      <- Hmisc::Cs(disea1, disea2, disea3, disea4, disea5,
-                                  illoff1, illoff2, illoff3, illoff4, illoff5)
+    #health_vars      <- Hmisc::Cs(disea1, disea2, disea3, disea4, disea5,
+    #                              illoff1, illoff2, illoff3, illoff4, illoff5)
 
-    benefit_vars     <- Hmisc::Cs(clims141, clims142, clims143, clims144, clims145,
-                                  benfts1, benfts2, benfts3, benfts4, benfts5,
-                                  ooben1, ooben2, ooben3, ooben4, ooben5)
+    #benefit_vars     <- Hmisc::Cs(clims141, clims142, clims143, clims144, clims145,
+    #                              benfts1, benfts2, benfts3, benfts4, benfts5,
+    #                              ooben1, ooben2, ooben3, ooben4, ooben5)
 
     work_vars     <- Hmisc::Cs(ttushr1, ttushr2, ttushr3, ttushr4, ttushr5,
                                grsswk1, grsswk2, grsswk3, grsswk4, grsswk5)
 
     names <- c(id_weights_vars, demographic_vars, education_vars, empstat_vars,
-               work_vars, health_vars, benefit_vars)
+               work_vars)
 
     data <- data[ ,names, with=F]
 
     data$quarter <- l
-    data$year <- 2020
+    data$year <- 2016
 
     clean.data.list[[l]] <- data
   }
@@ -110,7 +108,49 @@ lfs_read_5q_2020 <- function(
                 clean.data.list[[3]],
                 clean.data.list[[4]], fill=TRUE)
 
-  setDT(data)
+  ### generate missing values for variables not in this year
+
+  data[, etukeul1 := NA]
+  data[, etukeul2 := NA]
+  data[, etukeul3 := NA]
+  data[, etukeul4 := NA]
+  data[, etukeul5 := NA]
+
+  data[, govtof21 := NA]
+  data[, govtof22 := NA]
+  data[, govtof23 := NA]
+  data[, govtof24 := NA]
+  data[, govtof25 := NA]
+
+  data[, disea1 := NA]
+  data[, disea2 := NA]
+  data[, disea3 := NA]
+  data[, disea4 := NA]
+  data[, disea5 := NA]
+
+  data[, illoff1 := NA]
+  data[, illoff2 := NA]
+  data[, illoff3 := NA]
+  data[, illoff4 := NA]
+  data[, illoff5 := NA]
+
+  data[, clims141 := NA]
+  data[, clims142 := NA]
+  data[, clims143 := NA]
+  data[, clims144 := NA]
+  data[, clims145 := NA]
+
+  data[, benfts1 := NA]
+  data[, benfts2 := NA]
+  data[, benfts3 := NA]
+  data[, benfts4 := NA]
+  data[, benfts5 := NA]
+
+  data[, ooben1 := NA]
+  data[, ooben2 := NA]
+  data[, ooben3 := NA]
+  data[, ooben4 := NA]
+  data[, ooben5 := NA]
 
   return(data)
 }

@@ -10,8 +10,8 @@
 #' @return Returns a data table
 #' @export
 lfs_read_5q_2022 <- function(
-    root = c("C:/"),
-    file = "Users/cm1djm/Documents/Data/LFS/longitudinal/tab/"
+    root = c("X:/"),
+    file = "HAR_PR/PR/LFS/Data/longitudinal/tab/"
 ) {
 
   path <- here::here(paste0(root[1], file))

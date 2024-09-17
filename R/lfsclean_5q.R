@@ -30,6 +30,16 @@ lfsclean_5q <- function(root,
 
   data_list <- list()
 
+  ### 2012
+
+  if (2012 %in% year){
+
+    lfs <- lfs_clean_global_5q(lfs_read_5q_2012(root = root, file = file),
+                               year = year, ages = ages, keep_vars = keep_vars, complete_vars = complete_vars, deflator = deflator)
+
+    data_list <- append(data_list, list(lfs)) ; rm(lfs)
+  }
+
   ### 2020
 
   if (2020 %in% year){

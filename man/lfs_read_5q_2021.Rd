@@ -5,8 +5,8 @@
 \title{Read LFS 2021 longitudinal}
 \usage{
 lfs_read_5q_2021(
-  root = c("C:/"),
-  file = "Users/cm1djm/Documents/Data/LFS/longitudinal/tab/"
+  root = c("X:/"),
+  file = "HAR_PR/PR/LFS/Data/longitudinal/tab/"
 )
 }
 \arguments{
