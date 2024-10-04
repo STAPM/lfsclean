@@ -10,7 +10,7 @@
 #' @export
 lfs_read_2005 <- function(
   root = c("C:/"),
-  file = "Users/cm1djm/Documents/Datasets/Labour Force Survey/raw data/"
+  file = "Users/cm1djm/Documents/Data/Labour Force Survey/cross-sectional/tab/"
 ) {
 
   path <- here::here(paste0(root[1], file))
@@ -58,8 +58,9 @@ lfs_read_2005 <- function(
 
     weights_vars     <- Hmisc::Cs(pwt14,piwt14)
     demographic_vars <- Hmisc::Cs(age,sex,govtof,eth01,marstt,fdpch16)
-    education_vars   <- Hmisc::Cs(edage,hiqual4d,hiqual4,btec,sctvec,gnvq4,nvqlev,rsa,candg,numal,numas,hst,advhst,
+    education_vars   <- Hmisc::Cs(edage,hiqual4d,hiqual4,btec,sctvec,gnvq4,nvqlev,rsa,candg,numal,numas,hst,advhst,typhst1,typhst2,typhst3,typhst4,typhst5,
                                   quals401,quals402,quals403,quals404,quals405,quals406,quals407,quals408,quals409,quals410,quals411)
+    apprentice_vars  <- Hmisc::Cs(appr4,modapp4)
     health_vars      <- Hmisc::Cs(health,discurr,
                                   heal01,heal02,heal03,heal04,heal05,
                                   heal06,heal07,heal08,heal09,heal10)
@@ -67,7 +68,7 @@ lfs_read_2005 <- function(
                                   undemp,undhrs,ovhrs,lespay2)
     other_vars       <- Hmisc::Cs(refwkm,thiswv)
 
-    names <- c(demographic_vars,education_vars,work_vars,health_vars,weights_vars,other_vars)
+    names <- c(demographic_vars,education_vars,apprentice_vars,work_vars,health_vars,weights_vars,other_vars)
     names <- tolower(names)
 
     data <- data[ ,names, with=F]
@@ -105,16 +106,17 @@ lfs_read_2005 <- function(
 
     weights_vars     <- Hmisc::Cs(pwt14,piwt14)
     demographic_vars <- Hmisc::Cs(age,sex,govtof,eth01,marstt,fdpch16)
-    education_vars   <- Hmisc::Cs(hiqual5d,hiqual5,btec,sctvec,gnvq4,nvqlev,rsa,candg,numol5,numal,numas,hst,advhst,
+    education_vars   <- Hmisc::Cs(hiqual5d,hiqual5,btec,sctvec,gnvq4,nvqlev,rsa,candg,numol5,numal,numas,hst,advhst,typhst1,typhst2,typhst3,typhst4,typhst5,
                                   gcseful1,gcseful2,gcseful3,gcseful4,qgcse41,qgcse42,qgcse43,qgcse44,
                                   quals401,quals402,quals403,quals404,quals405,quals406,quals407,quals408,quals409,quals410,quals411,qualch51)
+    apprentice_vars  <- Hmisc::Cs(appr4,modapp4)
     health_vars      <- Hmisc::Cs(health,discurr,
                                   heal01,heal02,heal03,heal04,heal05,
                                   heal06,heal07,heal08,heal09,heal10)
     work_vars        <- Hmisc::Cs(inecac05,grsswk,ftptwk,ttachr,ttushr,mpnr02,publicr,indm92m,indd92m,inds92m,soc2km,sc2kmmn)
     other_vars       <- Hmisc::Cs(refwkm)
 
-    names <- c(demographic_vars,education_vars,work_vars,health_vars,weights_vars,other_vars)
+    names <- c(demographic_vars,education_vars,apprentice_vars,work_vars,health_vars,weights_vars,other_vars)
     names <- tolower(names)
 
     data <- data[ ,names, with=F]
@@ -127,8 +129,9 @@ lfs_read_2005 <- function(
     # rename variables which have names which change over time but don't need cleaning separately, and variables
     # which don't change over time at all.
 
-    data.table::setnames(data, c("refwkm", "pwt14","piwt14","numol5","gnvq4"),
-                         c("month", "pwt", "piwt","numol","gnvq") )
+    data.table::setnames(data,
+                         c("refwkm", "pwt14","piwt14","gnvq4","numol5"),
+                         c("month", "pwt", "piwt","gnvq","numol") )
 
     #preliminary cleaning of the vocational qualification variables
     data[btec   %in% c(5,6), btec := NA]
@@ -150,6 +153,9 @@ lfs_read_2005 <- function(
   ### combine quarters into a single data table
 
   data <- rbind(clean.data.list[[1]],clean.data.list[[2]],clean.data.list[[3]],clean.data.list[[4]],fill=TRUE)
+
+  rm(data.q1, data.q2, data.q3, data.q4, data.list, clean.data.list)
+  gc()
 
   data <- data.table(data)
 

@@ -6,7 +6,7 @@
 \usage{
 lfs_read_2005(
   root = c("C:/"),
-  file = "Users/cm1djm/Documents/Datasets/Labour Force Survey/raw data/"
+  file = "Users/cm1djm/Documents/Data/Labour Force Survey/cross-sectional/tab/"
 )
 }
 \arguments{
