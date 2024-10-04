@@ -6,6 +6,9 @@
 \usage{
 lfs_clean_health(data)
 }
+\arguments{
+\item{data}{data table. Raw LFS data produced using the reading functions.}
+}
 \value{
 Returns a new set of variables
 }

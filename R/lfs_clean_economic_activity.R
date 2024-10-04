@@ -3,6 +3,8 @@
 #' Produce variables indicating employment status, and for the employed also full/part-time status,
 #' industry, occupation, public/private sector, and firm size.
 #'
+#' @param data data table. Raw LFS data produced using the reading functions.
+#'
 #' @return Returns a new set of variables
 #' @export
 lfs_clean_economic_activity <- function(

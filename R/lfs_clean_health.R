@@ -2,6 +2,8 @@
 #'
 #' Cleans the raw data for health and health related variables.
 #'
+#' @param data data table. Raw LFS data produced using the reading functions.
+#'
 #' @return Returns a new set of variables
 #' @export
 lfs_clean_health <- function(

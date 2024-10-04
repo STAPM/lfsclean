@@ -2,6 +2,8 @@
 #'
 #' Cleans the raw data for age, gender, ethnicity, region, and marital status.
 #'
+#' @param data data table. Raw LFS data produced using the reading functions.
+#'
 #' @return Returns a new set of variables
 #' @export
 lfs_clean_demographic <- function(
