@@ -73,12 +73,12 @@ lfs_clean_global <- function(data,
   ######################
   ### Merge datasets ###
 
-  merged_data <- merge(main_data, demographics, by = c("obs_id"))
-  merged_data <- merge(merged_data, lmkt,       by = c("obs_id"))
-  merged_data <- merge(merged_data, bene,       by = c("obs_id"))
-  merged_data <- merge(merged_data, educ,       by = c("obs_id"))
-  merged_data <- merge(merged_data, heal,       by = c("obs_id"))
-  merged_data <- merge(merged_data, earn,       by = c("obs_id"))
+  merged_data <- merge(main_data, demographics, by = c("obs_id"), all.x = TRUE)
+  merged_data <- merge(merged_data, lmkt,       by = c("obs_id"), all.x = TRUE)
+  merged_data <- merge(merged_data, bene,       by = c("obs_id"), all.x = TRUE)
+  merged_data <- merge(merged_data, educ,       by = c("obs_id"), all.x = TRUE)
+  merged_data <- merge(merged_data, heal,       by = c("obs_id"), all.x = TRUE)
+  merged_data <- merge(merged_data, earn,       by = c("obs_id"), all.x = TRUE)
 
    final_data <- lfsclean::select_data(
       data = merged_data,
