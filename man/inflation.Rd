@@ -5,16 +5,16 @@
 \alias{inflation}
 \title{Monthly Inflation}
 \format{
-An object of class \code{data.table} (inherits from \code{data.frame}) with 866 rows and 5 columns.
+An object of class \code{data.table} (inherits from \code{data.frame}) with 890 rows and 5 columns.
 }
 \usage{
 inflation
 }
 \description{
 Time series of the CPIH (consumer price index including housing costs) inflation index and the
-RPI (retail price index) on a monthly basis with a base month of January 2022 Data are obtained
+RPI (retail price index) on a monthly basis with a base month of January 2025. Data are obtained
 from the Office for National Statistics for \href{https://www.ons.gov.uk/generator?format=xls&uri=/economy/inflationandpriceindices/timeseries/l522/mm23}{CPIH}
-and \href{https://www.ons.gov.uk/generator?format=xls&uri=/economy/inflationandpriceindices/timeseries/chaw/mm23}{RPI}
-last accessed 19/08/2022.
+and \href{https://www.ons.gov.uk/generator?format=xls&uri=/economy/inflationandpriceindices/timeseries/chaw/mm23}{RPI}.
+last updated 07/03/2025
 }
 \keyword{datasets}
