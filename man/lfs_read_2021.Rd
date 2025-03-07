@@ -5,8 +5,8 @@
 \title{Read LFS 2021 quarters}
 \usage{
 lfs_read_2021(
-  root = c("C:/"),
-  file = "Users/damon/OneDrive/Documents/Datasets/Labour Force Survey/tab/"
+  root = c("X:/"),
+  file = "HAR_PR/PR/LFS/Data/cross-sectional/tab/"
 )
 }
 \arguments{

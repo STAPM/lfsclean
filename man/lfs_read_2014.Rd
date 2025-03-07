@@ -5,8 +5,8 @@
 \title{Read LFS 2014 quarters}
 \usage{
 lfs_read_2014(
-  root = c("C:/"),
-  file = "Users/cm1djm/Documents/Datasets/Labour Force Survey/raw data/"
+  root = c("X:/"),
+  file = "HAR_PR/PR/LFS/Data/cross-sectional/tab/"
 )
 }
 \arguments{

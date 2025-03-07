@@ -9,8 +9,8 @@
 #' @return Returns a data table
 #' @export
 lfs_read_2021 <- function(
-  root = c("C:/"),
-  file = "Users/damon/OneDrive/Documents/Datasets/Labour Force Survey/tab/"
+  root = c("X:/"),
+  file = "HAR_PR/PR/LFS/Data/cross-sectional/tab/"
 ) {
 
   path <- here::here(paste0(root[1], file))
